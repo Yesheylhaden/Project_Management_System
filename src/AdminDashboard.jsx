@@ -59,15 +59,20 @@ export default function AdminDashboard() {
   return (
     <div className="dashboard-container">
       <header className="header">
+        <img
+            src="/logo.png"
+            alt="Thimphu TechPark Logo"
+            className="logo"
+          />
         <div className="logo">
-          <div className="circle">T</div>
-          <div>
-            <h2>Thimphu TechPark</h2>
-            <p>BHUTAN'S FIRST IT PARK</p>
+          <div className="tagline" >
+            <h4>Thimphu TechPark</h4>
+            <h4>BHUTAN'S FIRST IT PARK</h4>
           </div>
         </div>
         <div className="profile">A</div>
       </header>
+
 
       <div className="intro-card">
         <h1>✨ Admin Dashboard!</h1>
