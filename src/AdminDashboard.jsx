@@ -373,7 +373,7 @@ export default function AdminDashboard() {
               onChange={(e) => setNewProject({ ...newProject, budget: e.target.value })}
             />
 
-            {/* ✅ Upload PDF only here */}
+            {/*  Upload PDF only here */}
             <label>Upload Project PDF</label>
             <input
               type="file"
