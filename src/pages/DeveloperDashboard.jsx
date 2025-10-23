@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import DashboardCard from "../components/DashboardCard";
 import ProgressBar from "../components/ProgressBar";
@@ -26,9 +27,9 @@ export default function Dashboard() {
       <section className="mx-8 mt-8">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-semibold">My Projects</h2>
-          <a href="#" className="text-blue-600 text-sm font-medium">
+          <Link to="#" className="text-blue-600 text-sm font-medium">
             View All
-          </a>
+          </Link>
         </div>
         <div className="flex gap-6 mt-4">
           <ProgressBar
@@ -51,9 +52,9 @@ export default function Dashboard() {
         <div className="col-span-2">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">My Tasks</h2>
-            <a href="#" className="text-blue-600 text-sm font-medium">
+            <Link to="#" className="text-blue-600 text-sm font-medium">
               View All
-            </a>
+            </Link>
           </div>
           <div className="mt-3">
             <TaskItem
@@ -80,9 +81,9 @@ export default function Dashboard() {
         <div>
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Recent Activity</h2>
-            <a href="#" className="text-blue-600 text-sm font-medium">
+            <Link to="#" className="text-blue-600 text-sm font-medium">
               View All
-            </a>
+            </Link>
           </div>
           <div className="bg-white mt-3 p-4 rounded-xl shadow-sm">
             <ul className="text-sm text-gray-700 space-y-2">
