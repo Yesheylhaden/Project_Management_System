@@ -14,12 +14,9 @@ export default function AdminProfile() {
         <div className="sidebar-buttons">
           <button className="btn">Admin Name</button>
           <button className="btn">About</button>
-          <button className="btn">
-            Board View <FaTableCellsLarge className="icon" />
-          </button>
-          <button className="btn">
-            Table View <FaTableCellsLarge className="icon" />
-          </button>
+          <button className="btn">Email</button>
+          <button className="btn">Settings</button>
+        
         </div>
         <div className="logout">
           <BsPower className="logout-icon" />
