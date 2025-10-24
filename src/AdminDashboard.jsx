@@ -262,7 +262,7 @@ export default function AdminDashboard() {
                     <td>{proj.startDate}</td>
                     <td>{proj.endDate}</td>
                     <td>{proj.manager}</td>
-                    <td>${proj.budget}</td>
+                    <td>Nu{proj.budget}</td>
                     <td>
                       {proj.pdf ? (
                         <a href={URL.createObjectURL(proj.pdf)} target="_blank" rel="noopener noreferrer">View PDF</a>
