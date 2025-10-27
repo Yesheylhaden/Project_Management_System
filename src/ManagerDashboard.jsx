@@ -6,7 +6,7 @@ export default function ManagerDashboard() {
   const [assignedProjects, setAssignedProjects] = useState([]);
 
   useEffect(() => {
-    // Sample data (replace with backend fetch later)
+  
     setProjects([
       {
         id: 1,
