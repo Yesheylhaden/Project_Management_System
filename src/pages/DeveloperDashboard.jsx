@@ -27,14 +27,17 @@ export default function Dashboard() {
       <section className="mx-8 mt-8">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-semibold">My Projects</h2>
-          <Link to="#" className="text-blue-600 text-sm font-medium">
+          <Link
+            to="/projects"
+            className="text-blue-600 hover:underline text-sm font-medium"
+          >
             View All
           </Link>
         </div>
         <div className="flex gap-6 mt-4">
           <ProgressBar
             label="Website Redesign"
-            progress={65}
+            progress={0}
             team={5}
             due="Oct 15, 2023"
           />
@@ -49,10 +52,15 @@ export default function Dashboard() {
 
       {/* My Tasks + Recent Activity */}
       <section className="grid grid-cols-3 gap-6 mx-8 my-8">
+        {/* My Tasks */}
         <div className="col-span-2">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">My Tasks</h2>
-            <Link to="#" className="text-blue-600 text-sm font-medium">
+            {/* ✅ Updated Link to go to /tasks */}
+            <Link
+              to="/tasks"
+              className="text-blue-600 text-sm font-medium hover:underline"
+            >
               View All
             </Link>
           </div>
@@ -78,10 +86,15 @@ export default function Dashboard() {
           </div>
         </div>
 
+        {/* Recent Activity */}
         <div>
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Recent Activity</h2>
-            <Link to="#" className="text-blue-600 text-sm font-medium">
+            {/* ✅ Updated Link to go to /activities */}
+            <Link
+              to="/activities"
+              className="text-blue-600 text-sm font-medium hover:underline"
+            >
               View All
             </Link>
           </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import { Mail, Phone, Building } from "lucide-react";
+import { Link } from "react-router-dom"; // ✅ Added import
 
 const DeveloperProfile = () => {
   const projects = [
-    { title: "Website Redesign", due: "Dec 15, 2023", team: 5, progress: 65 },
+    { title: "Website Redesign", due: "Dec 15, 2023", team: 5, progress: 0 },
     { title: "Mobile App Development", due: "Nov 1, 2023", team: 8, progress: 42 },
   ];
 
@@ -47,7 +48,7 @@ const DeveloperProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f8fc] p-6">
+    <div className="min-h-screen bg-blue-50 p-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
         {/* Sidebar */}
         <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
@@ -114,7 +115,14 @@ const DeveloperProfile = () => {
 
           {/* Current Projects */}
           <section className="bg-white p-6 rounded-2xl shadow">
-            <h3 className="text-lg font-semibold mb-4">Current Projects</h3>
+            <div className="flex justify-between mb-4">
+              <h3 className="text-lg font-semibold">Current Projects</h3>
+              {/* ✅ View All navigates to View All Projects */}
+              <Link to="/projects" className="text-blue-600 text-sm hover:underline">
+                View All
+              </Link>
+            </div>
+
             <div className="space-y-4">
               {projects.map((p, index) => (
                 <div key={index}>
@@ -140,9 +148,10 @@ const DeveloperProfile = () => {
           <section className="bg-white p-6 rounded-2xl shadow">
             <div className="flex justify-between mb-4">
               <h3 className="text-lg font-semibold">My Tasks</h3>
-              <button className="text-blue-600 text-sm hover:underline">
+              {/* ✅ View All navigates to View All Tasks */}
+              <Link to="/tasks" className="text-blue-600 text-sm hover:underline">
                 View All
-              </button>
+              </Link>
             </div>
 
             <div className="space-y-3">
@@ -168,9 +177,10 @@ const DeveloperProfile = () => {
           <section className="bg-white p-6 rounded-2xl shadow">
             <div className="flex justify-between mb-4">
               <h3 className="text-lg font-semibold">Recent Activity</h3>
-              <button className="text-blue-600 text-sm hover:underline">
+              {/* ✅ View All navigates to View All Activities */}
+              <Link to="/activities" className="text-blue-600 text-sm hover:underline">
                 View All
-              </button>
+              </Link>
             </div>
             <ul className="space-y-2 text-sm text-gray-700">
               {activities.map((a, i) => (
