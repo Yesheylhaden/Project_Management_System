@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background: url("https://share.google/images/aWGL8D24tXeHV1L73") no-repeat center center/cover; */
   background-color: #e6f3ff;
   font-family: Arial, sans-serif;
 }
@@ -59,5 +58,5 @@
 
 .signup-text {
   margin-top: 15px;
-  font-size: 13px !important; /* Force the font size */
+  font-size: 13px !important; 
 }
