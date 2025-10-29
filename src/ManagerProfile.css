@@ -1,0 +1,208 @@
+.manager-profile-page {
+  font-family: "Poppins", sans-serif;
+  background: #f8f9fc;
+  min-height: 100vh;
+}
+
+/* Header */
+.mp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.mp-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mp-logo {
+  width: 45px;
+  height: 45px;
+}
+
+.mp-logo-text h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.mp-logo-text p {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.mp-nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.mp-nav a.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+.mp-user-icon {
+  background: #007bff;
+  color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* Layout */
+.mp-main {
+  display: flex;
+  padding: 30px 60px;
+  gap: 30px;
+}
+
+.mp-left-panel {
+  flex: 1;
+  max-width: 280px;
+}
+
+.mp-right-panel {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Profile Card */
+.mp-profile-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.mp-avatar {
+  background: #e9ecef;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+}
+
+.mp-name {
+  margin: 5px 0;
+}
+
+.mp-role {
+  color: #555;
+  font-weight: 500;
+}
+
+.mp-contact {
+  text-align: left;
+  font-size: 14px;
+  color: #555;
+  margin: 15px 0;
+}
+
+.mp-contact p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.mp-edit-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.mp-edit-btn:hover {
+  background: #0056b3;
+}
+
+/* About / Skills / Projects */
+.mp-about,
+.mp-skills,
+.mp-projects {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.mp-skill-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mp-skill-list span {
+  background: #e8f0fe;
+  color: #007bff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mp-project-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.mp-project-box {
+  flex: 1;
+  min-width: 250px;
+  background: #f9fafc;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+
+.mp-progress-bar {
+  background: #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 8px;
+  margin-top: 8px;
+}
+
+.mp-progress {
+  height: 100%;
+  background: #007bff;
+}
+
+.mp-progress-text {
+  font-size: 13px;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .mp-main {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .mp-left-panel {
+    max-width: 100%;
+  }
+}
