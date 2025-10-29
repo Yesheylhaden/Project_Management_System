@@ -32,17 +32,17 @@ export default function ManagerProfile() {
         <section className="mp-left-panel">
           <div className="mp-profile-card">
             <div className="mp-avatar">
-              <FaUser size={50} color="#007bff" />
+              <FaUser size={40} color="#007bff" />
             </div>
-            <h2 className="mp-name">Pika</h2>
-            <p className="mp-role">Senior Project Manager</p>
+            <h2 className="mp-name">Name</h2>
+            <p className="mp-role">Level</p>
 
             <div className="mp-contact">
               <p>
-                <FaEnvelope /> Pika@gmail.com
+                <FaEnvelope /> email@example.com
               </p>
               <p>
-                <FaPhone /> +97517332418
+                <FaPhone /> contact number
               </p>
               <p>
                 <FaBuilding /> Thimphu Tech-park Limited
