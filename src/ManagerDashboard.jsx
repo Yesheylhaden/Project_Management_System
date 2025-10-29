@@ -241,7 +241,7 @@ export default function ManagerDashboard() {
                     <td><input value={proj.status} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, status: e.target.value } : p))} /></td>
                     <td><input type="date" value={proj.startDate} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, startDate: e.target.value } : p))} /></td>
                     <td><input type="date" value={proj.endDate} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, endDate: e.target.value } : p))} /></td>
-                    <td><input value={proj.manager} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, manager: e.target.value } : p))} /></td>
+                    <td><input value={proj.manager} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, Developer: e.target.value } : p))} /></td>
                     <td><input type="number" value={proj.budget} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, budget: e.target.value } : p))} /></td>
                     <td>
                       {proj.pdf ? (
@@ -261,7 +261,7 @@ export default function ManagerDashboard() {
                     <td>{proj.status}</td>
                     <td>{proj.startDate}</td>
                     <td>{proj.endDate}</td>
-                    <td>{proj.manager}</td>
+                    <td>{proj.Developer}</td>
                     <td>Nu{proj.budget}</td>
                     <td>
                       {proj.pdf ? (
@@ -315,10 +315,10 @@ export default function ManagerDashboard() {
               onChange={(e) => setNewProject({ ...newProject, endDate: e.target.value })}
             />
 
-            <label>Manager</label>
+            <label>Developer</label>
             <input
-              value={newProject.manager}
-              onChange={(e) => setNewProject({ ...newProject, manager: e.target.value })}
+              value={newProject.Developer}
+              onChange={(e) => setNewProject({ ...newProject, Developer: e.target.value })}
             />
 
             <label>Budget</label>
