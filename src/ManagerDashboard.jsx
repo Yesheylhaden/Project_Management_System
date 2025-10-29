@@ -3,10 +3,22 @@ import './ManagerDashboard.css';
 
 export default function ManagerDashboard() {
   const [projects, setProjects] = useState([]);
-  const [assignedProjects, setAssignedProjects] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [selectionProjects, setSelectionProjects] = useState([]);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [editing, setEditing] = useState({ type: '', id: null }); // track which record is being edited
+
+  const [newProject, setNewProject] = useState({
+    name: '',
+    status: 'To Do',
+    startDate: '',
+    endDate: '',
+    manager: '',
+    budget: '',
+    pdf: null,
+  });
 
   useEffect(() => {
-  
     setProjects([
       {
         id: 1,
@@ -18,24 +30,29 @@ export default function ManagerDashboard() {
         endDate: '2025-10-15',
         deadline: '2025-10-20',
         priority: 'High',
-        pdf: null,
       },
     ]);
 
-    setAssignedProjects([
+    setUsers([
+      { id: 1, name: 'Sangay Choden', role: 'Admin', lastActive: '2025-10-13', status: 'Active' },
+    ]);
+
+    setSelectionProjects([
       {
         id: 1,
-        topic: 'Build Dashboard UI',
-        developer: 'Tashi Dorji',
-        startDate: '2025-10-10',
-        endDate: '2025-10-25',
-        file: null,
+        name: 'ERP Implementation',
+        status: 'Pending',
+        startDate: '2025-11-01',
+        endDate: '2026-01-30',
+        manager: 'Tashi',
+        budget: 50000,
+        pdf: null,
       },
     ]);
   }, []);
 
   const handleProjectChange = (id, field, value) => {
-    setProjects(projects.map(p => (p.id === id ? { ...p, [field]: value } : p)));
+    setProjects(projects.map((p) => (p.id === id ? { ...p, [field]: value } : p)));
   };
 
   const handleAddProject = () => {
@@ -49,94 +66,91 @@ export default function ManagerDashboard() {
       endDate: '',
       deadline: '',
       priority: 'Medium',
-      pdf: null,
     };
     setProjects([newProject, ...projects]);
   };
 
-  // === Handle PDF Upload for Projects ===
-  const handlePDFUpload = (e, id) => {
-    const file = e.target.files[0];
-    if (file) {
-      const fileURL = URL.createObjectURL(file);
-      setProjects(projects.map(p => (p.id === id ? { ...p, pdf: { name: file.name, url: fileURL } } : p)));
-    }
+  const handleAddUser = () => {
+    const newUser = {
+      id: Date.now(),
+      name: 'New User',
+      role: 'Staff',
+      lastActive: '',
+      status: 'Inactive',
+    };
+    setUsers([newUser, ...users]);
   };
 
-  // === Assign Project Functions ===
-  const handleAddAssignedProject = () => {
-    const newAssignment = {
-      id: Date.now(),
-      topic: '',
-      developer: '',
+  const handleCreateProject = () => {
+    const created = { ...newProject, id: Date.now() };
+    setSelectionProjects([created, ...selectionProjects]);
+    setShowCreateModal(false);
+    setNewProject({
+      name: '',
+      status: 'To Do',
       startDate: '',
       endDate: '',
-      file: null,
-    };
-    setAssignedProjects([newAssignment, ...assignedProjects]);
+      manager: '',
+      budget: '',
+      pdf: null,
+    });
   };
 
-  const handleAssignedChange = (id, field, value) => {
-    setAssignedProjects(assignedProjects.map(a => (a.id === id ? { ...a, [field]: value } : a)));
+  const handleSaveEdit = () => {
+    setEditing({ type: '', id: null });
   };
 
-  const handleFileUpload = (e, id) => {
-    const file = e.target.files[0];
-    if (file) {
-      const fileURL = URL.createObjectURL(file);
-      setAssignedProjects(
-        assignedProjects.map(a =>
-          a.id === id ? { ...a, file: { name: file.name, url: fileURL } } : a
-        )
-      );
-    }
+  const handleCancelEdit = () => {
+    setEditing({ type: '', id: null });
   };
 
   return (
     <div className="dashboard-container">
-      {/* === Header === */}
-      <header className="header">
-        <img src="/logo.png" alt="Thimphu TechPark Logo" className="logo" />
-        <div className="logo">
-          <div className="tagline">
-            <h4>Thimphu TechPark</h4>
-            <h4>BHUTAN'S FIRST IT PARK</h4>
-          </div>
-        </div>
-        <div className="profile">A</div>
-      </header>
+      {/* Header */}
+      {/* Header */}
+<header className="header glass-header">
+  <div className="logo-block">
+    <img src="/logo.png" alt="Thimphu TechPark Logo" className="logo-img" />
+    <div className="logo-text">
+      <h4>Thimphu TechPark</h4>
+      <p>BHUTAN'S FIRST IT PARK</p>
+    </div>
+  </div>
+  <div className="profile">M</div>
+</header>
 
-      {/* === Intro === */}
+
+      {/* Intro */}
       <div className="intro-card">
-        <h1>✨ Manager Dashboard</h1>
-        <p>Track, manage, and assign projects efficiently</p>
+        <h1>✨ Manager Dashboard!</h1>
+        <p>Track and manage all your company Projects</p>
       </div>
 
-      {/* === Stats Row === */}
+      {/* Stats */}
       <div className="stats-row">
         <div className="stat-box blue">
           <h3>TO DO LIST</h3>
-          <h1>{projects.filter(p => p.status === 'To Do').length}</h1>
-          <p>Projects waiting to start</p>
+          <h1>{projects.filter((p) => p.status === 'To Do').length}</h1>
+          <p>Project waiting to start</p>
         </div>
         <div className="stat-box orange">
           <h3>IN PROGRESS</h3>
-          <h1>{projects.filter(p => p.status === 'In Progress').length}</h1>
+          <h1>{projects.filter((p) => p.status === 'In Progress').length}</h1>
           <p>Active Projects</p>
         </div>
         <div className="stat-box cyan">
           <h3>INVOICE</h3>
-          <h1>{projects.filter(p => p.invoice < 100).length}</h1>
+          <h1>{projects.filter((p) => p.invoice < 100).length}</h1>
           <p>Pending Invoice</p>
         </div>
         <div className="stat-box green">
           <h3>DONE</h3>
-          <h1>{projects.filter(p => p.status === 'Done').length}</h1>
+          <h1>{projects.filter((p) => p.status === 'Done').length}</h1>
           <p>Completed Projects</p>
         </div>
       </div>
 
-      {/* === Project Table === */}
+      {/* All Projects */}
       <div className="section">
         <div className="section-header">
           <h2>All Projects</h2>
@@ -151,76 +165,187 @@ export default function ManagerDashboard() {
               <th>Invoice</th>
               <th>Start Date</th>
               <th>End Date</th>
-              <th>Deadline</th>
+              <th>Dead Line</th>
               <th>Priority</th>
-              <th>Upload File</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {projects.map(p => (
+            {projects.map((p) => (
               <tr key={p.id}>
-                <td><input value={p.name} onChange={(e) => handleProjectChange(p.id, 'name', e.target.value)} /></td>
-                <td><input value={p.status} onChange={(e) => handleProjectChange(p.id, 'status', e.target.value)} /></td>
-                <td><input type="number" value={p.progress} onChange={(e) => handleProjectChange(p.id, 'progress', e.target.value)} /></td>
-                <td><input type="number" value={p.invoice} onChange={(e) => handleProjectChange(p.id, 'invoice', e.target.value)} /></td>
-                <td><input type="date" value={p.startDate} onChange={(e) => handleProjectChange(p.id, 'startDate', e.target.value)} /></td>
-                <td><input type="date" value={p.endDate} onChange={(e) => handleProjectChange(p.id, 'endDate', e.target.value)} /></td>
-                <td><input type="date" value={p.deadline} onChange={(e) => handleProjectChange(p.id, 'deadline', e.target.value)} /></td>
-                <td>
-                  <select value={p.priority} onChange={(e) => handleProjectChange(p.id, 'priority', e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </select>
-                </td>
-                <td>
-                  <label className="upload-btn">
-                    Upload
-                    <input type="file" accept=".pdf,.doc,.docx,.zip" style={{ display: 'none' }} onChange={(e) => handlePDFUpload(e, p.id)} />
-                  </label>
-                  {p.pdf && <a href={p.pdf.url} target="_blank" rel="noreferrer" className="pdf-link">📄 {p.pdf.name}</a>}
-                </td>
+                {editing.type === 'project' && editing.id === p.id ? (
+                  <>
+                    <td><input value={p.name} onChange={(e) => handleProjectChange(p.id, 'name', e.target.value)} /></td>
+                    <td><input value={p.status} onChange={(e) => handleProjectChange(p.id, 'status', e.target.value)} /></td>
+                    <td><input type="number" value={p.progress} onChange={(e) => handleProjectChange(p.id, 'progress', e.target.value)} /></td>
+                    <td><input type="number" value={p.invoice} onChange={(e) => handleProjectChange(p.id, 'invoice', e.target.value)} /></td>
+                    <td><input type="date" value={p.startDate} onChange={(e) => handleProjectChange(p.id, 'startDate', e.target.value)} /></td>
+                    <td><input type="date" value={p.endDate} onChange={(e) => handleProjectChange(p.id, 'endDate', e.target.value)} /></td>
+                    <td><input type="date" value={p.deadline} onChange={(e) => handleProjectChange(p.id, 'deadline', e.target.value)} /></td>
+                    <td>
+                      <select value={p.priority} onChange={(e) => handleProjectChange(p.id, 'priority', e.target.value)}>
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                      </select>
+                    </td>
+                    <td>
+                      <button onClick={handleSaveEdit}>Save</button>
+                      <button className="cancel" onClick={handleCancelEdit}>Cancel</button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>{p.name}</td>
+                    <td>{p.status}</td>
+                    <td>{p.progress}%</td>
+                    <td>{p.invoice}</td>
+                    <td>{p.startDate}</td>
+                    <td>{p.endDate}</td>
+                    <td>{p.deadline}</td>
+                    <td>{p.priority}</td>
+                    <td><button onClick={() => setEditing({ type: 'project', id: p.id })}>Edit</button></td>
+                  </>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      {/* === Assign Project Section === */}
+      {/* Project Selection */}
       <div className="section">
         <div className="section-header">
-          <h2>Assign Project to Developer</h2>
-          <button onClick={handleAddAssignedProject}>+ Assign New Project</button>
+          <h2>Developer Selection</h2>
+          <button onClick={() => setShowCreateModal(true)}>+ Create Project</button>
         </div>
         <table>
           <thead>
             <tr>
-              <th>Project Topic</th>
-              <th>Developer Name</th>
+              <th>Project Name</th>
+              <th>Status</th>
               <th>Start Date</th>
               <th>End Date</th>
-              <th>Upload File</th>
+              <th>Developer</th>
+              <th>Budget</th>
+              <th>PDF File</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {assignedProjects.map(a => (
-              <tr key={a.id}>
-                <td><input value={a.topic} onChange={(e) => handleAssignedChange(a.id, 'topic', e.target.value)} placeholder="Enter project topic" /></td>
-                <td><input value={a.developer} onChange={(e) => handleAssignedChange(a.id, 'developer', e.target.value)} placeholder="Developer name" /></td>
-                <td><input type="date" value={a.startDate} onChange={(e) => handleAssignedChange(a.id, 'startDate', e.target.value)} /></td>
-                <td><input type="date" value={a.endDate} onChange={(e) => handleAssignedChange(a.id, 'endDate', e.target.value)} /></td>
-                <td>
-                  <label className="upload-btn">
-                    Upload
-                    <input type="file" accept=".pdf,.doc,.docx,.zip" style={{ display: 'none' }} onChange={(e) => handleFileUpload(e, a.id)} />
-                  </label>
-                  {a.file && <a href={a.file.url} target="_blank" rel="noreferrer" className="pdf-link">📄 {a.file.name}</a>}
-                </td>
+            {selectionProjects.map((proj) => (
+              <tr key={proj.id}>
+                {editing.type === 'selection' && editing.id === proj.id ? (
+                  <>
+                    <td><input value={proj.name} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, name: e.target.value } : p))} /></td>
+                    <td><input value={proj.status} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, status: e.target.value } : p))} /></td>
+                    <td><input type="date" value={proj.startDate} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, startDate: e.target.value } : p))} /></td>
+                    <td><input type="date" value={proj.endDate} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, endDate: e.target.value } : p))} /></td>
+                    <td><input value={proj.manager} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, manager: e.target.value } : p))} /></td>
+                    <td><input type="number" value={proj.budget} onChange={(e) => setSelectionProjects(selectionProjects.map(p => p.id === proj.id ? { ...p, budget: e.target.value } : p))} /></td>
+                    <td>
+                      {proj.pdf ? (
+                        <a href={URL.createObjectURL(proj.pdf)} target="_blank" rel="noopener noreferrer">View PDF</a>
+                      ) : (
+                        <span style={{ color: '#999' }}>No file uploaded</span>
+                      )}
+                    </td>
+                    <td>
+                      <button onClick={handleSaveEdit}>Save</button>
+                      <button className="cancel" onClick={handleCancelEdit}>Cancel</button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>{proj.name}</td>
+                    <td>{proj.status}</td>
+                    <td>{proj.startDate}</td>
+                    <td>{proj.endDate}</td>
+                    <td>{proj.manager}</td>
+                    <td>Nu{proj.budget}</td>
+                    <td>
+                      {proj.pdf ? (
+                        <a href={URL.createObjectURL(proj.pdf)} target="_blank" rel="noopener noreferrer">View PDF</a>
+                      ) : (
+                        <span style={{ color: '#999' }}>No file uploaded</span>
+                      )}
+                    </td>
+                    <td><button onClick={() => setEditing({ type: 'selection', id: proj.id })}>Edit</button></td>
+                  </>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {/* Create Project Modal */}
+      {showCreateModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Create New Project</h3>
+
+            <label>Project Name</label>
+            <input
+              value={newProject.name}
+              onChange={(e) => setNewProject({ ...newProject, name: e.target.value })}
+            />
+
+            <label>Status</label>
+            <select
+              value={newProject.status}
+              onChange={(e) => setNewProject({ ...newProject, status: e.target.value })}
+            >
+              <option>To Do</option>
+              <option>In Progress</option>
+              <option>Done</option>
+            </select>
+
+            <label>Start Date</label>
+            <input
+              type="date"
+              value={newProject.startDate}
+              onChange={(e) => setNewProject({ ...newProject, startDate: e.target.value })}
+            />
+
+            <label>End Date</label>
+            <input
+              type="date"
+              value={newProject.endDate}
+              onChange={(e) => setNewProject({ ...newProject, endDate: e.target.value })}
+            />
+
+            <label>Manager</label>
+            <input
+              value={newProject.manager}
+              onChange={(e) => setNewProject({ ...newProject, manager: e.target.value })}
+            />
+
+            <label>Budget</label>
+            <input
+              type="number"
+              value={newProject.budget}
+              onChange={(e) => setNewProject({ ...newProject, budget: e.target.value })}
+            />
+
+            {/*  Upload PDF only here */}
+            <label>Upload Project PDF</label>
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={(e) => setNewProject({ ...newProject, pdf: e.target.files[0] })}
+            />
+            {newProject.pdf && <p className="file-name">📎 {newProject.pdf.name}</p>}
+
+            <div className="modal-actions">
+              <button onClick={handleCreateProject}>Save</button>
+              <button className="cancel" onClick={() => setShowCreateModal(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
