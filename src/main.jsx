@@ -7,7 +7,7 @@ import AdminProfile from "./AdminProfile.jsx";
 import ManagerDashboard from "./ManagerDashboard.jsx";
 import ManagerProfile from "./ManagerProfile.jsx";
 import Signup from "./signup.jsx";
-import forgotPassword from "./forgotPassword.jsx";
+import  forgotPassword from "./forgotPassword.jsx";
 
 
 createRoot(document.getElementById("root")).render(
