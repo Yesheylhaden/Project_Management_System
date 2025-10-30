@@ -1,0 +1,173 @@
+.admin-profile-container {
+  display: flex;
+  height: 100vh;
+  background-color: #e8f1fa;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 25%;
+  background-color: #0056b3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  color: white;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: relative;
+}
+
+.profile-pic {
+  margin-bottom: 2rem;
+}
+
+.avatar-icon {
+  font-size: 5rem;
+  background-color: white;
+  color: #0056b3;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+}
+
+.btn {
+  background-color: white;
+  color: #0056b3;
+  border: none;
+  border-radius: 8px;
+  width: 80%;
+  padding: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e3efff;
+}
+
+.icon {
+  font-size: 1.1rem;
+}
+
+.logout {
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-icon {
+  font-size: 1.5rem;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #e8f1fa;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #d5e6fc;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.header-text h2 {
+  color: #003b80;
+  margin: 0;
+}
+.header-text p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Content Section */
+.content-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  color: #003b80;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.content-box {
+  background-color: #d5e6fc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-box h3 {
+  color: #003b80;
+  margin-bottom: 0.5rem;
+}
+
+.content-box textarea {
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  resize: none;
+  background: #e8f1fa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-profile-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .sidebar-buttons {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}

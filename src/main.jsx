@@ -4,7 +4,14 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import ForgotPassword from './forgotPassword.jsx'
 
-createRoot(document.getElementById('root')).render(
+import AdminDashboard from "./AdminDashboard.jsx";
+import AdminProfile from "./AdminProfile.jsx";
+import ManagerDashboard from "./ManagerDashboard.jsx";
+import ManagerProfile from "./ManagerProfile.jsx";
+import Signup from "./signup.jsx";
+
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <ForgotPassword />
