@@ -13,7 +13,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<ManagerProfile />} />
 
         {/* Dashboard route */}
-        <Route path="/dashboard" element={<ManagerDashboard />} />
+        <Route path="/ManagerDashboard" element={<ManagerDashboard />} />
       </Routes>
     </Router>
   </StrictMode>
