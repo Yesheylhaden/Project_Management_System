@@ -1,18 +1,3 @@
-/* import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import './index.css'
-import App from './AdminDashboard.jsx'
-import profile from './AdminProfile.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-    <profile />
-  </StrictMode>,
-)
- */
-
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
