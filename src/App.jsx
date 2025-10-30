@@ -4,13 +4,17 @@ import Header from "./components/Header";
 import SummaryCard from "./components/SummaryCard";
 import ProjectTable from "./components/ProjectTable";
 import BudgetChart from "./components/BudgetChart";
-import NewReport from "./pages/NewReport"; // ⬅️ you'll create this page
+import NewReport from "./pages/NewReport"; 
+import Projects from "./pages/TableView";
+import InvoiceAndBills from "./pages/InvoiceAndBills";
+import TableView from "./pages/TableView"; 
+import MyProfile from "./pages/MyProfile"; 
 
 function Dashboard() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-[#E6F3FF]">
       <Sidebar />
 
       <div className="flex-1 p-6">
@@ -91,12 +95,18 @@ function Dashboard() {
   );
 }
 
+
+// ✅ App Routes
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/new-report" element={<NewReport />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/invoice-bills" element={<InvoiceAndBills />} />
+        <Route path="/table-view" element={<TableView />} />
+        <Route path="/profile" element={<MyProfile />} /> 
       </Routes>
     </Router>
   );

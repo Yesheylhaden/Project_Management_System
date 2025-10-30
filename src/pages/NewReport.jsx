@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 
 export default function NewReport() {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-[#E6F3FF]">
       <Sidebar />
       <main className="flex-1 p-8">
         <h1 className="text-2xl font-bold mb-2">Generate New Report</h1>
