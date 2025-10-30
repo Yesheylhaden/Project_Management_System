@@ -4,20 +4,23 @@ import Navbar from "./components/Navbar";
 import DeveloperDashboard from "./pages/DeveloperDashboard";
 import DeveloperProfile from "./pages/DeveloperProfile";
 import ViewAllProjects from "./pages/ViewAllProjects";
-import ViewAllTasks from "./pages/ViewAllTasks";      
+import ViewAllTasks from "./pages/ViewAllTasks";
 import ViewAllActivities from "./pages/ViewAllActivities";
+import DeveloperEditProfile from "./pages/DeveloperEditProfile"; 
+import ProfileLogoModal from "./pages/ProfileLogoModal";
 
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-blue-50 text-gray-800">
+      <div className="min-h-screen bg-[#E6F3FF] text-gray-800">
         <Navbar />
         <Routes>
           <Route path="/" element={<DeveloperDashboard />} />
           <Route path="/profile" element={<DeveloperProfile />} />
           <Route path="/projects" element={<ViewAllProjects />} />
-          <Route path="/tasks" element={<ViewAllTasks />} />          {/* ✅ new route */}
-          <Route path="/activities" element={<ViewAllActivities />} /> {/* ✅ new route */}
+          <Route path="/tasks" element={<ViewAllTasks />} />
+          <Route path="/activities" element={<ViewAllActivities />} />
+          <Route path="/edit-profile" element={<DeveloperEditProfile />} />
         </Routes>
       </div>
     </Router>

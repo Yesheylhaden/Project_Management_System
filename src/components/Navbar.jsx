@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from '../assets/logo.png'; 
+import ProfileLogoModal from "../pages/ProfileLogoModal"; // ✅ Import the modal
 
 export default function Navbar() {
   const location = useLocation();
@@ -38,10 +39,8 @@ export default function Navbar() {
           </Link>
         ))}
 
-        {/* User Avatar */}
-        <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-semibold">
-          T
-        </div>
+        {/* ✅ Replace static avatar with ProfileLogoModal */}
+        <ProfileLogoModal />
       </div>
     </nav>
   );
