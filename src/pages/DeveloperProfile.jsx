@@ -10,7 +10,12 @@ const DeveloperProfile = () => {
 
   const projects = [
     { title: "Website Redesign", due: "Dec 15, 2023", team: 5, progress: 0 },
-    { title: "Mobile App Development", due: "Nov 1, 2023", team: 8, progress: 42 },
+    {
+      title: "Mobile App Development",
+      due: "Nov 1, 2023",
+      team: 8,
+      progress: 42,
+    },
   ];
 
   const tasks = [
@@ -64,7 +69,7 @@ const DeveloperProfile = () => {
         <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
           <div className="w-24 h-24 rounded-full bg-gray-200 overflow-hidden">
             <img
-              src="assets/profile.png"
+              src="../profile.png"
               alt="profile"
               className="w-full h-full object-cover"
             />
@@ -136,7 +141,10 @@ const DeveloperProfile = () => {
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">Current Projects</h3>
               {/* ✅ Linked to /projects */}
-              <Link to="/projects" className="text-blue-600 text-sm hover:underline">
+              <Link
+                to="/projects"
+                className="text-blue-600 text-sm hover:underline"
+              >
                 View All
               </Link>
             </div>
@@ -167,7 +175,10 @@ const DeveloperProfile = () => {
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">My Tasks</h3>
               {/* ✅ Linked to /tasks */}
-              <Link to="/tasks" className="text-blue-600 text-sm hover:underline">
+              <Link
+                to="/tasks"
+                className="text-blue-600 text-sm hover:underline"
+              >
                 View All
               </Link>
             </div>
@@ -196,7 +207,10 @@ const DeveloperProfile = () => {
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">Recent Activity</h3>
               {/* ✅ Linked to /activities */}
-              <Link to="/activities" className="text-blue-600 text-sm hover:underline">
+              <Link
+                to="/activities"
+                className="text-blue-600 text-sm hover:underline"
+              >
                 View All
               </Link>
             </div>
