@@ -66,6 +66,23 @@ const getStatusColor = (status) => {
 };
 
 export default function TableView() {
+  // ✅ Function to export data as CSV
+  const handleExport = () => {
+    const csvHeader = "Project Name,Status,Progress,Team,Start Date,Deadline,Priority\n";
+    const csvRows = projects.map(
+      (p) =>
+        `${p.name},${p.status},${p.progress}%,${p.team.join(" / ")},${p.startDate},${p.deadline},${p.priority}`
+    );
+    const csvContent = "data:text/csv;charset=utf-8," + csvHeader + csvRows.join("\n");
+
+    const link = document.createElement("a");
+    link.href = encodeURI(csvContent);
+    link.download = "projects_export.csv";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="flex min-h-screen bg-[#E6F3FF]">
       {/* Sidebar */}
@@ -93,9 +110,14 @@ export default function TableView() {
           <div className="flex justify-between items-center mb-2">
             <h2 className="font-semibold text-gray-700">All Projects</h2>
             <div className="flex gap-2">
-              <button className="flex items-center gap-1 text-sm text-gray-600 border border-gray-300 px-2 py-1 rounded hover:bg-gray-100">
+              {/* ✅ Export button now works */}
+              <button
+                onClick={handleExport}
+                className="flex items-center gap-1 text-sm text-gray-600 border border-gray-300 px-2 py-1 rounded hover:bg-gray-100"
+              >
                 <Download className="w-4 h-4" /> Export
               </button>
+              
               <button className="text-sm text-gray-600 border border-gray-300 px-2 py-1 rounded hover:bg-gray-100">
                 View Options
               </button>
@@ -120,9 +142,7 @@ export default function TableView() {
               <tbody>
                 {projects.map((project, i) => (
                   <tr key={i} className="border-b hover:bg-gray-50">
-                    <td className="py-3 px-3 font-medium text-gray-700">
-                      {project.name}
-                    </td>
+                    <td className="py-3 px-3 font-medium text-gray-700">{project.name}</td>
                     <td className="py-3 px-3">
                       <span
                         className={`text-xs font-semibold px-2 py-1 rounded-full ${getStatusColor(
