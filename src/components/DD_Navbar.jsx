@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from '../assets/logo.png'; 
-import ProfileLogoModal from "../pages/ProfileLogoModal"; // ✅ Import the modal
+import ProfileLogoModal from "../pages/DD_ProfileLogoModal"; // ✅ Import the modal
 
 export default function Navbar() {
   const location = useLocation();
