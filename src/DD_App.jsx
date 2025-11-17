@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import Navbar from "./components/Navbar";
 import DeveloperDashboard from "./pages/DeveloperDashboard";
-import DeveloperProfile from "./pages/DeveloperProfile";
-import ViewAllProjects from "./pages/ViewAllProjects";
-import ViewAllTasks from "./pages/ViewAllTasks";
-import ViewAllActivities from "./pages/ViewAllActivities";
-import DeveloperEditProfile from "./pages/DeveloperEditProfile"; 
-import ProfileLogoModal from "./pages/ProfileLogoModal";
+import DeveloperProfile from "./pages/DD_Profile";
+import ViewAllProjects from "./pages/DD_ViewAllProjects";
+import ViewAllTasks from "./pages/DD_ViewAllTasks";
+import ViewAllActivities from "./pages/DD_ViewAllActivities";
+import DeveloperEditProfile from "./pages/DD_EditProfile"; 
+import ProfileLogoModal from "./pages/DD_ProfileLogoModal";
 
 export default function App() {
   return (
