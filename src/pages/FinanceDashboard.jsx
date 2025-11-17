@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
-import SummaryCard from "../components/SummaryCard";
-import BudgetChart from "../components/BudgetChart";
-import ProjectTable from "../components/ProjectTable";
+import Sidebar from "../components/FD_Sidebar";
+import SummaryCard from "../components/FD_SummaryCard";
+import BudgetChart from "../components/FD_BudgetChart";
+import ProjectTable from "../components/FD_ProjectTable";
 import { useNavigate } from "react-router-dom";
 
 export default function FinanceDashboard() {

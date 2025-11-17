@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/FD_Sidebar";
 
 export default function NewReport() {
   return (
@@ -14,11 +14,15 @@ export default function NewReport() {
         <div className="bg-white rounded-xl shadow-sm p-6">
           {/* Report Details */}
           <div className="mb-6">
-            <h2 className="text-lg font-semibold mb-3 text-blue-700">Report Configuration</h2>
+            <h2 className="text-lg font-semibold mb-3 text-blue-700">
+              Report Configuration
+            </h2>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700">Report Name *</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Report Name *
+                </label>
                 <input
                   type="text"
                   placeholder="e.g., Q3 Budget Variance Analysis"
@@ -27,7 +31,9 @@ export default function NewReport() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Report Type *</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Report Type *
+                </label>
                 <input
                   type="text"
                   placeholder="Report Type"
@@ -37,7 +43,9 @@ export default function NewReport() {
             </div>
 
             <div className="mt-4">
-              <label className="block text-sm font-medium text-gray-700">Description (Optional)</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Description (Optional)
+              </label>
               <textarea
                 placeholder="Describe the purpose of this project..."
                 className="w-full mt-1 p-2 border rounded-md focus:outline-blue-500"
@@ -65,9 +73,23 @@ export default function NewReport() {
             <div className="mt-4">
               <h4 className="font-medium mb-2">Include Data</h4>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
-                {["Budget Information", "Actual Costs", "Variance Analysis", "Forecast Data", "Invoice Details"].map((item) => (
+                {[
+                  "Budget Information",
+                  "Actual Costs",
+                  "Variance Analysis",
+                  "Forecast Data",
+                  "Invoice Details",
+                ].map((item) => (
                   <label key={item} className="flex items-center gap-2">
-                    <input type="checkbox" className="accent-blue-600" defaultChecked={["Budget Information", "Actual Costs", "Variance Analysis"].includes(item)} />
+                    <input
+                      type="checkbox"
+                      className="accent-blue-600"
+                      defaultChecked={[
+                        "Budget Information",
+                        "Actual Costs",
+                        "Variance Analysis",
+                      ].includes(item)}
+                    />
                     {item}
                   </label>
                 ))}

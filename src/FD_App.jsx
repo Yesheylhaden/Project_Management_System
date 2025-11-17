@@ -4,18 +4,17 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
-import SummaryCard from "./components/SummaryCard";
-import ProjectTable from "./components/ProjectTable";
-import BudgetChart from "./components/BudgetChart";
+import Sidebar from "./components/FD_Sidebar";
+import Header from "./components/FD_Header";
+import SummaryCard from "./components/FD_SummaryCard";
+import ProjectTable from "./components/FD_ProjectTable";
+import BudgetChart from "./components/FD_BudgetChart";
 import NewReport from "./pages/NewReport";
 import Projects from "./pages/TableView";
 import InvoiceAndBills from "./pages/InvoiceAndBills";
 import TableView from "./pages/TableView";
 import MyProfile from "./pages/MyProfile";
 import Dashboard from "./pages/Dashboard";
-
 
 // ✅ App Routes
 export default function App() {

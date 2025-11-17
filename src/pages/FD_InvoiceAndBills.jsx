@@ -1,23 +1,55 @@
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar"; // Make sure the path is correct
+import Sidebar from "../components/FD_Sidebar"; // Make sure the path is correct
 
 export default function InvoiceAndBills() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showNewInvoice, setShowNewInvoice] = useState(false);
 
   const invoices = [
-    { id: "INV-1001", client: "Druk IT Solutions", issueDate: "01/08/2024", dueDate: "15/08/2024", amount: "$4,500.00", status: "Paid" },
-    { id: "INV-1002", client: "Bhutan Telecom", issueDate: "05/08/2024", dueDate: "20/08/2024", amount: "$2,800.00", status: "Pending" },
-    { id: "INV-1003", client: "Tashi Infocomm", issueDate: "10/08/2024", dueDate: "25/08/2024", amount: "$3,200.00", status: "Overdue" },
-    { id: "INV-1004", client: "Yangphel Data Center", issueDate: "12/09/2024", dueDate: "27/09/2024", amount: "$6,000.00", status: "Paid" },
+    {
+      id: "INV-1001",
+      client: "Druk IT Solutions",
+      issueDate: "01/08/2024",
+      dueDate: "15/08/2024",
+      amount: "$4,500.00",
+      status: "Paid",
+    },
+    {
+      id: "INV-1002",
+      client: "Bhutan Telecom",
+      issueDate: "05/08/2024",
+      dueDate: "20/08/2024",
+      amount: "$2,800.00",
+      status: "Pending",
+    },
+    {
+      id: "INV-1003",
+      client: "Tashi Infocomm",
+      issueDate: "10/08/2024",
+      dueDate: "25/08/2024",
+      amount: "$3,200.00",
+      status: "Overdue",
+    },
+    {
+      id: "INV-1004",
+      client: "Yangphel Data Center",
+      issueDate: "12/09/2024",
+      dueDate: "27/09/2024",
+      amount: "$6,000.00",
+      status: "Paid",
+    },
   ];
 
   const getStatusColor = (status) => {
     switch (status) {
-      case "Paid": return "bg-green-100 text-green-700";
-      case "Pending": return "bg-yellow-100 text-yellow-700";
-      case "Overdue": return "bg-red-100 text-red-700";
-      default: return "bg-gray-100 text-gray-600";
+      case "Paid":
+        return "bg-green-100 text-green-700";
+      case "Pending":
+        return "bg-yellow-100 text-yellow-700";
+      case "Overdue":
+        return "bg-red-100 text-red-700";
+      default:
+        return "bg-gray-100 text-gray-600";
     }
   };
 
@@ -34,7 +66,9 @@ export default function InvoiceAndBills() {
       <div className="flex-1 p-8 relative">
         {/* Header Section */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">Invoice and Bills</h1>
+          <h1 className="text-2xl font-bold text-gray-800">
+            Invoice and Bills
+          </h1>
           <p className="text-gray-500">
             Overview of all issued invoices, due dates, and payment statuses.
           </p>
@@ -66,14 +100,23 @@ export default function InvoiceAndBills() {
             </thead>
             <tbody>
               {filteredInvoices.map((invoice) => (
-                <tr key={invoice.id} className="border-b hover:bg-gray-50 transition">
-                  <td className="py-3 px-4 font-medium text-gray-800">{invoice.id}</td>
+                <tr
+                  key={invoice.id}
+                  className="border-b hover:bg-gray-50 transition"
+                >
+                  <td className="py-3 px-4 font-medium text-gray-800">
+                    {invoice.id}
+                  </td>
                   <td className="py-3 px-4">{invoice.client}</td>
                   <td className="py-3 px-4">{invoice.issueDate}</td>
                   <td className="py-3 px-4">{invoice.dueDate}</td>
                   <td className="py-3 px-4">{invoice.amount}</td>
                   <td className="py-3 px-4">
-                    <span className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusColor(invoice.status)}`}>
+                    <span
+                      className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusColor(
+                        invoice.status
+                      )}`}
+                    >
                       {invoice.status}
                     </span>
                   </td>

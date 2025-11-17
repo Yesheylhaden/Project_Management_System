@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Edit3, Mail, Phone, MapPin, Briefcase, Calendar } from "lucide-react";
-import SideBar from "../components/Sidebar";
+import SideBar from "../components/FD_Sidebar";
 
 export default function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
