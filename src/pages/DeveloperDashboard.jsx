@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import DashboardCard from "../components/DashboardCard";
-import ProgressBar from "../components/ProgressBar";
-import TaskItem from "../components/TaskItem";
+import DashboardCard from "../components/DD_DashboardCard";
+import ProgressBar from "../components/DD_ProgressBar";
+import TaskItem from "../components/DD_TaskItem";
 
 export default function Dashboard() {
   return (

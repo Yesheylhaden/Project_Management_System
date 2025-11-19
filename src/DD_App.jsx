@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/DD_Navbar";
 import DeveloperDashboard from "./pages/DeveloperDashboard";
 import DeveloperProfile from "./pages/DD_Profile";
 import ViewAllProjects from "./pages/DD_ViewAllProjects";
