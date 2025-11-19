@@ -70,7 +70,7 @@ function Login() {
           <label>
             <input type="checkbox" /> Remember me
           </label>
-          <a href="#">Forgot Password?</a>
+          <a href="/forgotPassword">Forgot Password?</a>
         </div>
 
         <button type="submit" className="login-btn" disabled={loading}>
@@ -78,7 +78,7 @@ function Login() {
         </button>
 
         <p className="signup-text">
-          Don’t have an account? <a href="#">Signup</a>
+          Don’t have an account? <a href="/">Signup</a>
         </p>
       </form>
     </div>

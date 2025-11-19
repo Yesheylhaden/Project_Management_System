@@ -5,9 +5,7 @@ export default function Signup() {
   return (
     <div className="signup-bg">
       <form className="signup-card">
-        <div className="signup-title">
-         Sign up
-        </div>
+        <div className="signup-title">Sign up</div>
         <select className="signup-input" defaultValue="">
           <option value="" disabled>
             Company Name
@@ -34,7 +32,11 @@ export default function Signup() {
             placeholder="Last Name"
           />
         </div>
-        <input className="signup-input" type="password" placeholder="Password" />
+        <input
+          className="signup-input"
+          type="password"
+          placeholder="Password"
+        />
         <input
           className="signup-input"
           type="password"
@@ -54,11 +56,8 @@ export default function Signup() {
           Sign up with Google
         </button>
         <div className="signup-login-link">
-          Already a member?{" "}
-          <a href="#">
-            Login
-          </a>
-          
+          Already a member? 
+          <a href="/login">Login</a>
         </div>
       </form>
     </div>
