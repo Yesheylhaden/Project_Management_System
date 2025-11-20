@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Developer pages
@@ -19,8 +19,14 @@ import ManagerProfile from "./pages/ManagerProfile";
 import Signup from "./pages/signup";
 import ForgotPassword from "./pages/forgotPassword";
 import Login from "./pages/login";
-import Register from "./pages/L_Register";
 
+// Finance pages
+import FinanceDashboard from "./pages/FinanceDashboard";
+import NewReport from "./pages/FD_NewReport";
+import Projects from "./pages/FD_TableView";
+import InvoiceAndBills from "./pages/FD_InvoiceAndBills";
+import TableView from "./pages/FD_TableView";
+import MyProfile from "./pages/FD_MyProfile";
 
 export default function App() {
   return (
@@ -28,10 +34,10 @@ export default function App() {
       <Routes>
         {/* Signup & ForgotPassword */}
         <Route path="/" element={<Signup />} />
-        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
 
         {/* Login/Register toggle */}
-        <Route path="/login" element={<LoginRegisterWrapper />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Manager */}
         <Route path="/managerDashboard" element={<ManagerDashboard />} />
@@ -42,22 +48,21 @@ export default function App() {
         <Route path="/adminProfile" element={<AdminProfile />} />
 
         {/* Developer routes */}
-          <Route path="DeveloperDashboard" element={<DeveloperDashboard />} />
-          <Route path="DeveloperProfile" element={<DeveloperProfile />} />
-          <Route path="DeveloperProjects" element={<ViewAllProjects />} />
-          <Route path="Developertasks" element={<ViewAllTasks />} />
-          <Route path="DeveloperActivities" element={<ViewAllActivities />} />
-          <Route path="DeveloperEdit-Profile" element={<DeveloperEditProfile />} />
+        <Route path="DeveloperDashboard" element={<DeveloperDashboard />} />
+        <Route path="DeveloperProfile" element={<DeveloperProfile />} />
+        <Route path="DeveloperProjects" element={<ViewAllProjects />} />
+        <Route path="Developertasks" element={<ViewAllTasks />} />
+        <Route path="DeveloperActivities" element={<ViewAllActivities />} />
+        <Route path="DeveloperEdit-Profile" element={<DeveloperEditProfile />} />
 
+        {/* Finance routes */}
+        <Route path="/FinanceDashboard" element={<FinanceDashboard />} />
+        <Route path="/NewReport" element={<NewReport />} />
+        <Route path="/Projects" element={<Projects />} />
+        <Route path="/TableView" element={<TableView />} />
+        <Route path="/InvoiceBills" element={<InvoiceAndBills />} />
+        <Route path="/Profile" element={<MyProfile />} />
       </Routes>
     </Router>
-  );
-}
-
-function LoginRegisterWrapper() {
-  return (
-    <div style={{ textAlign: "center", marginTop: "40px" }}>
-      <Login />
-    </div>
   );
 }

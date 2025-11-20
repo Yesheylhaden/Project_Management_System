@@ -67,18 +67,32 @@ function Login() {
         {error && <p className="error-text">{error}</p>}
 
         <div className="options">
-          <label>
-            <input type="checkbox" /> Remember me
+         
+          
+          <div className="div">
+
+          <input type="checkbox" />
+          </div>
+          <div className="div">
+            <label>
+
+             Remember me
           </label>
-          <a href="/forgotPassword">Forgot Password?</a>
+          </div>
+          <div className="forget-pass">
+        <a href="#">Forgot Password?</a>
         </div>
+         
+        </div>
+        
+        
 
         <button type="submit" className="login-btn" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
 
         <p className="signup-text">
-          Don’t have an account? <a href="/">Signup</a>
+          Don’t have an account? <a href="#">Signup</a>
         </p>
       </form>
     </div>

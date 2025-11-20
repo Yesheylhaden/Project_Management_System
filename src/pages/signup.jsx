@@ -46,10 +46,14 @@ export default function Signup() {
           Sign up
         </button>
         <div className="signup-remember">
-          <input type="checkbox" id="remember" style={{ marginRight: 8 }} />
-          <label htmlFor="remember" style={{ fontSize: 14 }}>
-            Remember Me!
-          </label>
+          <div className="div"> <input type="checkbox" /></div>
+          <div className="div">
+            <h4>Remember me</h4>
+          </div>
+          
+          {/* <label>
+            
+          </label> */}
         </div>
         <hr style={{ width: "100%", margin: "16px 0" }} />
         <button className="signup-google-btn" type="button">

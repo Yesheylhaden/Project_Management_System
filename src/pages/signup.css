@@ -1,8 +1,9 @@
-html, body, #root {
-  height: 100%;
+html,
+body,
+#root {
+  /* height: 100%; */
   margin: 0;
   padding: 0;
-  
 }
 
 .signup-bg {
@@ -12,15 +13,17 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  flex-direction: column;
+  background: #e6f3ff;
+  font-family: Arial, sans-serif;
 }
 
 .signup-card {
-  background: rgba(255,255,255,0.92);
+  background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 4px 32px rgba(205, 34, 34, 0.12);
   padding: 36px 32px;
-  width: 370px;
+  width: 450px;
   max-width: 95vw;
   display: flex;
   flex-direction: column;
@@ -29,12 +32,13 @@ html, body, #root {
 
 .signup-input {
   width: 100%;
-  padding: 14px 1px;
+  padding: 1rem;
+  /* padding: 14px 1px; */
   margin: 8px 12px;
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 12px;
-  background: #f7fafd;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .signup-btn {
@@ -43,10 +47,10 @@ html, body, #root {
   margin: 16px 0 8px 0;
   border-radius: 8px;
   border: none;
-  background: #1e90ff;
+  background: #007bff;
   color: #fff;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -56,7 +60,7 @@ html, body, #root {
   margin: 16px 0 8px 0;
   border-radius: 8px;
   border: 1px solid #ddd;
-  background: #fff;
+  background: #e6f3ff;
   color: #444;
   font-weight: bold;
   font-size: 18px;
@@ -76,8 +80,10 @@ html, body, #root {
 .signup-remember {
   width: 100%;
   display: flex;
-  align-items: center;
-  margin: 8px 0;
+  justify-content: start;
+  /* align-items: center; */
+  gap: 1rem;
+  font-size: 13px;
 }
 
 .signup-title {
