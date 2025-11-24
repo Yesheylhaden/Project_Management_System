@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/DD_Navbar";
 
 const projects = [
   {
@@ -33,9 +34,11 @@ const projects = [
 
 const ViewAllProjects = () => {
   return (
-    <div className="p-6 bg-[#f4f8ff] min-h-screen">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">All Projects</h1>
+    <div className="bg-[#f4f8ff] min-h-screen"> 
+    <Navbar />
+      <div className="p-6 ">
+      <div className="mb-6 bg-blue-900 text-white rounded-lg mx-0 p-6 shadow-md h-16 flex items-center ">
+        <h1 className="text-2xl font-bold text-white">All Projects</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -54,7 +57,7 @@ const ViewAllProjects = () => {
 
             <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
               <div
-                className="bg-blue-600 h-2.5 rounded-full"
+                className="bg-blue-900 h-2.5 rounded-full"
                 style={{ width: `${project.progress}%` }}
               ></div>
             </div>
@@ -65,6 +68,8 @@ const ViewAllProjects = () => {
         ))}
       </div>
     </div>
+    </div>
+    
   );
 };
 

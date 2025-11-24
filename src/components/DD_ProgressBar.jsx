@@ -10,7 +10,7 @@ export default function ProgressBar({ label, progress, team, due }) {
       <p className="text-sm text-gray-500 mt-1">Due: {due}</p>
       <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
         <div
-          className="bg-blue-600 h-2 rounded-full"
+          className="bg-blue-900 h-2 rounded-full"
           style={{ width: `${progress}%` }}
         ></div>
       </div>

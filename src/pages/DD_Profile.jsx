@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import { Mail, Phone, Building } from "lucide-react";
-import { Link } from "react-router-dom"; // ✅ Import Link for navigation
+import { Link } from "react-router-dom";
 import Navbar from "../components/DD_Navbar";
 
 const DeveloperProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("Tandin Yuzer");
   const [email, setEmail] = useState("tandin123@gmail.com");
-  const [position, setPosition] = useState("System Admin");
+  const [position, setPosition] = useState("Developer");
 
   const projects = [
-    { title: "Website Redesign", due: "Dec 15, 2023", team: 5, progress: 0 },
-    {
-      title: "Mobile App Development",
-      due: "Nov 1, 2023",
-      team: 8,
-      progress: 42,
-    },
+    { title: "Website Redesign", due: "Dec 15, 2023", team: 5, progress: 25 },
+    { title: "Mobile App Development", due: "Nov 1, 2023", team: 8, progress: 72 },
   ];
 
   const tasks = [
@@ -64,32 +59,51 @@ const DeveloperProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#E6F3FF] ">
+    <div className="min-h-screen bg-blue-50">
       <Navbar />
+
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 p-6">
+
         {/* Sidebar */}
         <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
-          <div className="w-24 h-24 rounded-full bg-gray-200 overflow-hidden">
-            <img
-              src="../profile.png"
-              alt="profile"
-              className="w-full h-full object-cover"
-            />
+
+          {/* Profile Image */}
+          <div className="relative w-28 h-28">
+            <div className="w-full h-full rounded-full overflow-hidden border-4 border-green-500 shadow-lg">
+              <img
+                src="../src/assets/profile.jpg"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Status */}
+            <span className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-2 border-white rounded-full" />
+            <span className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 rounded-full animate-ping opacity-75" />
           </div>
+
           <h2 className="mt-3 text-lg font-semibold">{name}</h2>
           <p className="text-blue-600 text-sm">{position}</p>
 
+          {/* Stats */}
           <div className="flex justify-between w-full mt-5 text-center">
-            <div>
-              <p className="text-xl font-bold">18</p>
-              <p className="text-xs text-gray-500">Tasks Completed</p>
+
+            {/* Tasks Completed */}
+            <div className="relative w-30 h-21 bg-white rounded-2xl shadow-md flex flex-col items-center justify-center p-9">
+              <div className="absolute left-0 top-0 h-full w-2 rounded-l-2xl bg-yellow-500" />
+              <p className="text-2xl font-bold text-yellow-600">18</p>
+              <p className="text-xs text-gray-500 mt-1">Tasks Completed</p>
             </div>
-            <div>
-              <p className="text-xl font-bold">7</p>
-              <p className="text-xs text-gray-500">Active Projects</p>
+
+            {/* Active Projects */}
+            <div className="relative w-30 h-21 bg-white rounded-2xl shadow-md flex flex-col items-center justify-center p-9">
+              <div className="absolute left-0 top-0 h-full w-2 rounded-l-2xl bg-green-500" />
+              <p className="text-2xl font-bold text-green-600">7</p>
+              <p className="text-xs text-gray-500 mt-1">Active Projects</p>
             </div>
+
           </div>
 
+          {/* Contact Info */}
           <div className="mt-6 space-y-2 text-sm w-full">
             <p className="flex items-center gap-2">
               <Mail size={16} /> {email}
@@ -102,10 +116,10 @@ const DeveloperProfile = () => {
             </p>
           </div>
 
-          {/* Edit Profile Button */}
+          {/* Edit Button */}
           <button
             onClick={() => setIsModalOpen(true)}
-            className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition"
+            className="mt-6 w-full bg-blue-900 hover:bg-blue-700 text-white py-2 rounded-lg transition"
           >
             Edit Profile
           </button>
@@ -113,6 +127,7 @@ const DeveloperProfile = () => {
 
         {/* Main Content */}
         <div className="md:col-span-2 space-y-6">
+
           {/* About Me */}
           <section className="bg-white p-6 rounded-2xl shadow">
             <h3 className="text-lg font-semibold mb-2">About Me</h3>
@@ -138,15 +153,11 @@ const DeveloperProfile = () => {
             </div>
           </section>
 
-          {/* Current Projects */}
+          {/* Projects */}
           <section className="bg-white p-6 rounded-2xl shadow">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">Current Projects</h3>
-              {/* ✅ Linked to /projects */}
-              <Link
-                to="/Developerprojects"
-                className="text-blue-600 text-sm hover:underline"
-              >
+              <Link to="/Developerprojects" className="text-blue-600 text-sm hover:underline">
                 View All
               </Link>
             </div>
@@ -158,12 +169,14 @@ const DeveloperProfile = () => {
                     <p>{p.title}</p>
                     <p>{p.progress}%</p>
                   </div>
+
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full"
+                      className="bg-blue-900 h-2 rounded-full"
                       style={{ width: `${p.progress}%` }}
                     />
                   </div>
+
                   <p className="text-xs text-gray-500 mt-1">
                     Due: {p.due} | Team: {p.team}
                   </p>
@@ -172,28 +185,24 @@ const DeveloperProfile = () => {
             </div>
           </section>
 
-          {/* My Tasks */}
+          {/* Tasks */}
           <section className="bg-white p-6 rounded-2xl shadow">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">My Tasks</h3>
-              {/* ✅ Linked to /tasks */}
-              <Link
-                to="/Developertasks"
-                className="text-blue-600 text-sm hover:underline"
-              >
+              <Link to="/Developertasks" className="text-blue-600 text-sm hover:underline">
                 View All
               </Link>
             </div>
 
             <div className="space-y-3">
-              {tasks.map((t, i) => (
+              {tasks.map((t, index) => (
                 <div
-                  key={i}
+                  key={index}
                   className="border p-3 rounded-lg hover:bg-gray-50 transition"
                 >
                   <p className="text-sm font-medium">{t.title}</p>
                   <p className="text-xs text-gray-500">
-                    Project: {t.project} —{" "}
+                    Project: {t.project} —
                     <span className={getPriorityColor(t.priority)}>
                       {t.priority} Priority
                     </span>
@@ -204,34 +213,32 @@ const DeveloperProfile = () => {
             </div>
           </section>
 
-          {/* Recent Activity */}
+          {/* Activity */}
           <section className="bg-white p-6 rounded-2xl shadow">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">Recent Activity</h3>
-              {/* ✅ Linked to /activities */}
-              <Link
-                to="/Developeractivities"
-                className="text-blue-600 text-sm hover:underline"
-              >
+              <Link to="/Developeractivities" className="text-blue-600 text-sm hover:underline">
                 View All
               </Link>
             </div>
 
             <ul className="space-y-2 text-sm text-gray-700">
-              {activities.map((a, i) => (
-                <li key={i} className="border-b pb-2">
+              {activities.map((a, index) => (
+                <li key={index} className="border-b pb-2">
                   {a}
                 </li>
               ))}
             </ul>
           </section>
+
         </div>
       </div>
 
-      {/* Edit Profile Modal */}
+      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-2xl w-96 relative shadow-lg">
+
             <h2 className="text-lg font-semibold mb-4">Edit Profile</h2>
 
             <label className="block text-sm font-medium mb-1">Name</label>
@@ -272,9 +279,11 @@ const DeveloperProfile = () => {
                 Save
               </button>
             </div>
+
           </div>
         </div>
       )}
+
     </div>
   );
 };

@@ -45,23 +45,20 @@ export default function Signup() {
         <button className="signup-btn" type="submit">
           Sign up
         </button>
-        <div className="signup-remember">
-          <div className="div"> <input type="checkbox" /></div>
-          <div className="div">
-            <h4>Remember me</h4>
-          </div>
-          
-          {/* <label>
-            
-          </label> */}
-        </div>
-        <hr style={{ width: "100%", margin: "16px 0" }} />
+
+        {/* <div className="signup-remember">
+          <label className="remember-container">
+            <input type="checkbox" className="remember-checkbox" />
+            <span className="remember-text">Remember me</span>
+          </label>
+        </div> */}
+
+        <hr style={{ width: "100%", margin: "10px " }} />
         <button className="signup-google-btn" type="button">
           Sign up with Google
         </button>
         <div className="signup-login-link">
-          Already a member? 
-          <a href="/login">Login</a>
+          Already a member?  <a href="/login">Login</a>
         </div>
       </form>
     </div>

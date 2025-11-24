@@ -21,12 +21,16 @@ const ProfileLogoModal = () => {
   return (
     <div>
       {/* Profile Logo */}
-      <div
-        className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-xl cursor-pointer hover:ring-2 hover:ring-blue-500 transition"
+      <div 
+        className="w-12 h-12 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-blue-500 transition"
         onClick={() => setIsOpen(true)}
-      >
-        👤
-      </div>
+        >
+        <img
+          src="../src/assets/profile.jpg" 
+          alt="Profile"
+          className="w-full h-full object-cover"
+        />
+      </div>  
 
       {/* Modal Popup */}
       {isOpen && (
@@ -42,8 +46,12 @@ const ProfileLogoModal = () => {
 
             {/* Developer Info */}
             <div className="flex flex-col items-center mb-4">
-              <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-3xl mb-3">
-                👤
+              <div className="w-20 h-20 rounded-full overflow-hidden mb-3">
+                <img
+                  src="../src/assets/profile.jpg"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h2 className="text-lg font-semibold">{developer.name}</h2>
               <p className="text-sm text-gray-500">{developer.role}</p>

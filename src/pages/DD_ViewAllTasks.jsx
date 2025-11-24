@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/DD_Navbar";
 
 const tasks = [
   {
@@ -30,15 +31,18 @@ const tasks = [
     statusColor: "text-blue-600",
   },
 ];
+// mb-6 bg-blue-800 text-white rounded-lg mx-0 p-6 shadow-md h-16 flex items-center
 
 export default function AllTasks() {
   return (
-    <div className="min-h-screen bg-blue-50 p-8">
-      <h1 className="text-2xl font-bold mb-6">All Tasks</h1>
-      <div className="bg-white shadow rounded-lg p-4">
-        <table className="min-w-full border-collapse">
+    <div className="min-h-screen bg-blue-50">
+      <Navbar />
+      <div className="p-8">
+      <h1 className="text-2xl font-bold mb-6 bg-blue-900 text-white rounded-lg mx-0 p-6 shadow-md h-16 flex items-center">All Tasks</h1>
+      <div className="">
+        <table className="min-w-full border-collapse bg-white">
           <thead>
-            <tr className="text-left bg-gray-100">
+            <tr className="text-left bg-blue-800 text-white">
               <th className="p-3 font-semibold">Task</th>
               <th className="p-3 font-semibold">Project</th>
               <th className="p-3 font-semibold">Due Date</th>
@@ -62,6 +66,7 @@ export default function AllTasks() {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 }

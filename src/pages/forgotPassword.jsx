@@ -39,7 +39,7 @@ const ForgotPassword = () => {
 
                 <div className="footer-links">
                     <span>Back to <Link to="/login">Login</Link></span>
-                    <span>Don't have an account? <Link to="/">Sign Up</Link></span>
+                    <span>Don't have an account? <Link to="/">Signup</Link></span>
                 </div>
             </div>
         </div>

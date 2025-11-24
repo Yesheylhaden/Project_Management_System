@@ -4,6 +4,7 @@ import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false); // new controlled state
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -24,8 +25,9 @@ function Login() {
       if (response.ok) {
         // Save token in localStorage
         localStorage.setItem("token", data.token);
+        // optionally send the remember flag to backend or use it on client
+        console.log("Remember me:", remember);
         alert("✅ Login successful!");
-        // Optionally redirect to dashboard
         // window.location.href = "/dashboard";
       } else {
         setError(data.message || "Login failed!");
@@ -67,32 +69,29 @@ function Login() {
         {error && <p className="error-text">{error}</p>}
 
         <div className="options">
-         
-          
-          <div className="div">
-
-          <input type="checkbox" />
-          </div>
-          <div className="div">
-            <label>
-
-             Remember me
+          {/* Single label wrapping input + text (most reliable) */}
+          <label className="remember-container">
+            <input
+              type="checkbox"
+              className="remember-checkbox"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+              aria-label="Remember me"
+            />
+            <span className="remember-text">Remember me</span>
           </label>
-          </div>
+
           <div className="forget-pass">
-        <a href="#">Forgot Password?</a>
+            <a href="/ForgotPassword">Forgot Password?</a>
+          </div>
         </div>
-         
-        </div>
-        
-        
 
         <button type="submit" className="login-btn" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
 
         <p className="signup-text">
-          Don’t have an account? <a href="#">Signup</a>
+          Don’t have an account? <a href="/">Signup</a>
         </p>
       </form>
     </div>

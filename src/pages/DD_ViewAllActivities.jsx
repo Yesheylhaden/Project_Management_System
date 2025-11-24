@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/DD_Navbar";
 
 const activities = [
   {
@@ -25,13 +26,15 @@ const activities = [
 
 export default function AllActivities() {
   return (
-    <div className="min-h-screen bg-blue-50 p-8">
-      <h1 className="text-2xl font-bold mb-6">Recent Activity</h1>
+    <div className="min-h-screen bg-blue-50">
+      <Navbar />
+      <div className="p-8">
+      <h1 className="text-2xl font-bold mb-6 bg-blue-900 text-white rounded-lg mx-0 p-6 shadow-md h-16 flex items-center ">Recent Activity</h1>
       <div className="bg-white shadow rounded-lg p-6">
         <ul className="space-y-4">
           {activities.map((activity, index) => (
             <li key={index} className="flex items-start space-x-3">
-              <div className="flex-shrink-0 w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
+              <div className="flex-shrink-0 w-2 h-2 mt-2 bg-blue-900 rounded-full"></div>
               <div>
                 <p className="text-gray-800">
                   <span className="font-semibold">{activity.user}</span> —{" "}
@@ -44,5 +47,7 @@ export default function AllActivities() {
         </ul>
       </div>
     </div>
+    </div>
+    
   );
 }
