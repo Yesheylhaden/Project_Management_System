@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 export default function AdminManagerSelection() {
   const [data, setData] = useState([
-    { id: 1, name: "ERP Implementation", status: "Pending", managers: ["Tashi"], budget: 50000 }
+    {
+      id: 1,
+      name: "ERP Implementation",
+      status: "Pending",
+      managers: ["Tashi"],
+      budget: 50000,
+      progress: 0 // initial progress
+    }
   ]);
   const [editing, setEditing] = useState(null);
   const [modal, setModal] = useState(false);
@@ -10,26 +17,26 @@ export default function AdminManagerSelection() {
     name: "",
     status: "To Do",
     managers: [""],
-    budget: ""
+    budget: "",
+    progress: 0
   });
 
-  // Keep track of project count for auto-naming
   const [projectCount, setProjectCount] = useState(1);
 
   const openModal = () => {
-    // Automatically set default project name
     setNewProj({
       name: `New Project ${projectCount}`,
       status: "To Do",
       managers: [""],
-      budget: ""
+      budget: "",
+      progress: 0
     });
     setModal(true);
   };
 
   const save = () => {
     setData([{ ...newProj, id: Date.now() }, ...data]);
-    setProjectCount(prev => prev + 1); // Increment count for next project
+    setProjectCount(prev => prev + 1);
     setModal(false);
   };
 
@@ -46,7 +53,7 @@ export default function AdminManagerSelection() {
   return (
     <div className="section">
       <div className="section-header">
-        <h2>Manager Selection</h2>
+        <h2>Project List</h2>
         <button onClick={openModal}>+ Create Project</button>
       </div>
 
@@ -55,6 +62,7 @@ export default function AdminManagerSelection() {
           <tr>
             <th>Name</th>
             <th>Status</th>
+            <th>Progress</th> {/* NEW COLUMN */}
             <th>Managers</th>
             <th>Budget</th>
             <th>Action</th>
@@ -84,6 +92,19 @@ export default function AdminManagerSelection() {
                       <option>In Progress</option>
                       <option>Done</option>
                     </select>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={p.progress}
+                      onChange={e =>
+                        setData(d =>
+                          d.map(x => (x.id === p.id ? { ...x, progress: Number(e.target.value) } : x))
+                        )
+                      }
+                      min={0}
+                      max={100}
+                    />%
                   </td>
                   <td>
                     {p.managers.map((m, i) => (
@@ -118,6 +139,7 @@ export default function AdminManagerSelection() {
                 <>
                   <td>{p.name}</td>
                   <td>{p.status}</td>
+                  <td>{p.progress}%</td> {/* Display as percentage */}
                   <td>{p.managers.join(", ")}</td>
                   <td>Nu {p.budget}</td>
                   <td>
@@ -137,7 +159,7 @@ export default function AdminManagerSelection() {
             <h3>Create New Project</h3>
 
             <label>Project Name</label>
-            <input value={newProj.name} disabled /> {/* Default name, cannot edit */}
+            <input value={newProj.name} disabled />
 
             <label>Status</label>
             <select
@@ -149,21 +171,20 @@ export default function AdminManagerSelection() {
               <option>Done</option>
             </select>
 
-            <label>Managers</label>
+            
+
+            <label>Project Lead</label>
             {newProj.managers.map((m, i) => (
               <input
                 key={i}
-                placeholder={`Manager ${i + 1}`}
+                placeholder={``}
                 value={m}
                 onChange={e => handleManagerChange(i, e.target.value)}
                 style={{ display: "block", marginBottom: "4px" }}
               />
             ))}
-            <button type="button" onClick={addManagerField} style={{ marginBottom: "10px" }}>
-              + Add Another Manager
-            </button>
-
-        
+            
+          
 
             <div className="modal-actions">
               <button onClick={save}>Save</button>
