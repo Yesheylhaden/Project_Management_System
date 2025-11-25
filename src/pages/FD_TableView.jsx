@@ -1,6 +1,6 @@
 import React from "react";
 import { Search, Plus, Edit, Eye, Trash2, Download } from "lucide-react";
-import SideBar from "../components/FD_Sidebar";
+import Navbar from "../components/FD_Navbar"; // Renamed from '../components/Navbar' to align with previous context
 
 const projects = [
   {
@@ -88,11 +88,12 @@ export default function TableView() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#E6F3FF]">
-      {/* Sidebar */}
-      <SideBar />
+    // CHANGE 1: Changed main div to flex-col (vertical layout)
+    <div className="flex flex-col min-h-screen bg-blue-50">
+      {/* CHANGE 2: Navbar is now at the top of the component tree */}
+      <Navbar />
 
-      {/* Main Content */}
+      {/* Main Content (now takes up the rest of the space) */}
       <div className="flex-1 p-8">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">

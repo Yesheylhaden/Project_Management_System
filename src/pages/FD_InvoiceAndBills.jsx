@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Sidebar from "../components/FD_Sidebar"; // Make sure the path is correct
+// FIX: Changed the import path from FD_Navbar to a more likely component name/path
+import Navbar from "../components/FD_Navbar"; 
 
 export default function InvoiceAndBills() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -58,13 +59,12 @@ export default function InvoiceAndBills() {
   );
 
   return (
-    <div className="flex min-h-screen bg-[#E6F3FF]">
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main Content */}
-      <div className="flex-1 p-8 relative">
+    <div className="flex flex-col min-h-screen bg-blue-50">
+      <Navbar /> 
+      {/* Main Content Area */}
+      <div className="flex-1 p-8">
         {/* Header Section */}
+        
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-800">
             Invoice and Bills
@@ -135,7 +135,7 @@ export default function InvoiceAndBills() {
         {/* Floating New Invoice Button */}
         <button
           onClick={() => setShowNewInvoice(true)}
-          className="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg flex items-center gap-2 transition"
+          className="fixed bottom-8 right-8 bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg flex items-center gap-2 transition"
         >
           <span className="text-xl">＋</span> New Invoice
         </button>
