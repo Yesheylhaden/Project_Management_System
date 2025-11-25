@@ -13,7 +13,7 @@ import DeveloperEditProfile from "./pages/DD_EditProfile";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminProfile from "./pages/AdminProfile";
 import AdminAllProjects from "./pages/AdminAllProjects";          // NEW FILE
-import AdminManagerSelection from "./pages/AdminManagerSelection"; // NEW FILE
+import AdminProjectList from "./pages/AdminProjectList";
 import AdminUserManagement from "./pages/AdminUserManagement";     // NEW FILE
 
 // Manager
@@ -54,7 +54,7 @@ export default function App() {
 
         {/* Admin Sub-Pages (NEW) */}
         <Route path="/adminDashboard/all-projects" element={<AdminAllProjects />} />
-        <Route path="/adminDashboard/manager-selection" element={<AdminManagerSelection />} />
+        <Route path="/adminDashboard/project-list" element={<AdminProjectList />} />
         <Route path="/adminDashboard/user-management" element={<AdminUserManagement />} />
 
         {/* Developer */}

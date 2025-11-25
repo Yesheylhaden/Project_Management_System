@@ -46,7 +46,7 @@ export default function AdminDashboard() {
       {menuOpen && (
         <div className="dropdown-menu">
           <p onClick={() => navigate("/adminDashboard/all-projects")}>All Projects</p>
-          <p onClick={() => navigate("/adminDashboard/manager-selection")}>Manager Selection</p>
+          <p onClick={() => navigate("/adminDashboard/project-list")}>Project List</p>
           <p onClick={() => navigate("/adminDashboard/user-management")}>User Management</p>
         </div>
       )}

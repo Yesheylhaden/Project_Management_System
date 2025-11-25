@@ -7,6 +7,7 @@ export default function AdminUserManagement() {
   const [edit, setEdit] = useState(null);
 
   const roles = ["Admin", "Manager", "Finance", "Developer"];
+  const statuses = ["Active", "Inactive"];
 
   return (
     <div className="section">
@@ -14,7 +15,10 @@ export default function AdminUserManagement() {
         <h2>User Management</h2>
         <button
           onClick={() =>
-            setUsers([...users, { id: Date.now(), name: "New User", role: "Staff", status: "Inactive" }])
+            setUsers([
+              ...users,
+              { id: Date.now(), name: "New User", role: "Staff", status: "Inactive" }
+            ])
           }
         >
           + Add User
@@ -60,12 +64,18 @@ export default function AdminUserManagement() {
                   </td>
 
                   <td>
-                    <input
+                    <select
                       value={u.status}
                       onChange={e =>
                         setUsers(x => x.map(a => (a.id === u.id ? { ...a, status: e.target.value } : a)))
                       }
-                    />
+                    >
+                      {statuses.map((status, idx) => (
+                        <option key={idx} value={status}>
+                          {status}
+                        </option>
+                      ))}
+                    </select>
                   </td>
 
                   <td>

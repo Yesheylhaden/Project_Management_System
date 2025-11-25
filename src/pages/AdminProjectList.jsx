@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function AdminManagerSelection() {
+export default function AdminProjectList() {
   const [data, setData] = useState([
     {
       id: 1,
