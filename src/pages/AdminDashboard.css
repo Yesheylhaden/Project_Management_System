@@ -1,11 +1,26 @@
-/* AdminDashboard.css */
+/* AdminDashboard.css - Updated for Full Size Layout and Responsiveness */
+
+/* CSS Reset for Full Screen */
+html, body {
+  margin: 0;
+  padding: 0;
+  /* Fixed the width to 100% to prevent horizontal scrolling/movement */
+  width: 100%;
+  height: 100%;
+  /* Explicitly hide all overflow to prevent the frame from moving/scrolling */
+  overflow: hidden;
+}
 
 /* General layout */
 .dashboard-container {
   font-family: Arial, sans-serif;
-  padding:  100px;
+  /* Increased padding for a roomier feel */
+  padding: 32px;
   background: #f4f8fb;
-  min-height: 100vh;
+  /* Set definitive height and allow internal scrolling to keep the page fixed */
+  height: 100vh; 
+  overflow-y: auto;
+  width: 100%; /* Ensure full width */
   box-sizing: border-box;
 }
 
@@ -19,7 +34,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 300px;
+  /* Increased margin-bottom for more separation */
+  margin-bottom: 32px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -112,6 +128,7 @@
   border-radius: 8px;
   margin-bottom: 20px;
   text-align: center;
+  height: 155px;
 }
 
 /* Statistics row */
@@ -125,9 +142,10 @@
   flex: 1;
   min-width: 250px;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 100px;
   color: white;
   text-align: center;
+  height: 155px;
 }
 .stat-box.blue { background: #007bff; }
 .stat-box.orange { background: #ff7b00; }
@@ -182,15 +200,19 @@ input, select {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+/* Removed arbitrary negative margin for better layout control */
 .tagline {
   white-space: nowrap;
-  margin-left: -90px; /* move it left, adjust as needed */
 }
 
 
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
+  .dashboard-container {
+    padding: 24px; /* Increased from 16px for tablet view */
+  }
   .stats-row {
     flex-direction: row;
     flex-wrap: wrap;
