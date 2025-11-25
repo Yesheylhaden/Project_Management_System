@@ -9,9 +9,14 @@ import ViewAllTasks from "./pages/DD_ViewAllTasks";
 import ViewAllActivities from "./pages/DD_ViewAllActivities";
 import DeveloperEditProfile from "./pages/DD_EditProfile";
 
-// Admin & Manager pages
+// Admin sub-pages (NEW)
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminProfile from "./pages/AdminProfile";
+import AdminAllProjects from "./pages/AdminAllProjects";          // NEW FILE
+import AdminManagerSelection from "./pages/AdminManagerSelection"; // NEW FILE
+import AdminUserManagement from "./pages/AdminUserManagement";     // NEW FILE
+
+// Manager
 import ManagerDashboard from "./pages/ManagerDashboard";
 import ManagerProfile from "./pages/ManagerProfile";
 
@@ -36,26 +41,31 @@ export default function App() {
         <Route path="/" element={<Signup />} />
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
 
-        {/* Login/Register toggle */}
+        {/* Login */}
         <Route path="/login" element={<Login />} />
 
         {/* Manager */}
         <Route path="/managerDashboard" element={<ManagerDashboard />} />
         <Route path="/managerProfile" element={<ManagerProfile />} />
 
-        {/* Admin */}
+        {/* -------------------- ADMIN ROUTES -------------------- */}
         <Route path="/adminDashboard" element={<AdminDashboard />} />
         <Route path="/adminProfile" element={<AdminProfile />} />
 
-        {/* Developer routes */}
-        <Route path="DeveloperDashboard" element={<DeveloperDashboard />} />
-        <Route path="DeveloperProfile" element={<DeveloperProfile />} />
-        <Route path="DeveloperProjects" element={<ViewAllProjects />} />
-        <Route path="Developertasks" element={<ViewAllTasks />} />
-        <Route path="DeveloperActivities" element={<ViewAllActivities />} />
-        <Route path="DeveloperEdit-Profile" element={<DeveloperEditProfile />} />
+        {/* Admin Sub-Pages (NEW) */}
+        <Route path="/adminDashboard/all-projects" element={<AdminAllProjects />} />
+        <Route path="/adminDashboard/manager-selection" element={<AdminManagerSelection />} />
+        <Route path="/adminDashboard/user-management" element={<AdminUserManagement />} />
 
-        {/* Finance routes */}
+        {/* Developer */}
+        <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
+        <Route path="/DeveloperProfile" element={<DeveloperProfile />} />
+        <Route path="/DeveloperProjects" element={<ViewAllProjects />} />
+        <Route path="/Developertasks" element={<ViewAllTasks />} />
+        <Route path="/DeveloperActivities" element={<ViewAllActivities />} />
+        <Route path="/DeveloperEdit-Profile" element={<DeveloperEditProfile />} />
+
+        {/* Finance */}
         <Route path="/FinanceDashboard" element={<FinanceDashboard />} />
         <Route path="/NewReport" element={<NewReport />} />
         <Route path="/Projects" element={<Projects />} />
