@@ -9,6 +9,7 @@
   box-sizing: border-box;
 }
 
+
 /* Header with blur background */
 .glass-header {
   backdrop-filter: blur(10px);
