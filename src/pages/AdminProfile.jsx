@@ -39,7 +39,7 @@ export default function AdminProfile() {
         </div>
 
         <div className="content-section">
-          <h2 className="section-title">About</h2>
+          <h2 className="section-title">Welcome back!!</h2>
 
           {/* Search bar */}
           <div className="search-bar">

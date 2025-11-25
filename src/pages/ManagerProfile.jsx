@@ -41,10 +41,7 @@ export default function ManagerProfile() {
                 <FaEnvelope /> email@example.com
               </p>
               <p>
-                <FaPhone /> contact number
-              </p>
-              <p>
-                <FaBuilding /> Thimphu Tech-park Limited
+                <FaPhone /> contact_number
               </p>
             </div>
 
@@ -78,18 +75,18 @@ export default function ManagerProfile() {
             <div className="mp-project-grid">
               <div className="mp-project-box">
                 <h4>Website Redesign</h4>
-                <p>Due: Oct 15, 2023</p>
-                <p>Team: 5</p>
+                <p>Due: D/M/Y</p>
+                <p>Team: 0</p>
                 <div className="mp-progress-bar">
                   <div className="mp-progress" style={{ width: "65%" }}></div>
                 </div>
-                <p className="mp-progress-text">Progress: 65%</p>
+                <p className="mp-progress-text">Progress: 0%</p>
               </div>
 
               <div className="mp-project-box">
                 <h4>Mobile App Development</h4>
-                <p>Due: Nov 1, 2023</p>
-                <p>Team: 8</p>
+                <p>Due: Dec 1, 2025</p>
+                <p>Team: 4</p>
                 <div className="mp-progress-bar">
                   <div className="mp-progress" style={{ width: "42%" }}></div>
                 </div>
