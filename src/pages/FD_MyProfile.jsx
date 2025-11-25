@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Edit3, Mail, Phone, MapPin, Briefcase, Calendar } from "lucide-react";
-import SideBar from "../components/FD_Sidebar";
+import Navbar from "../components/FD_Navbar";
+// 1. Import the image here for correct usage
+import ProfileImage from "../assets/profile.jpg"; 
 
 export default function MyProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,33 +28,36 @@ export default function MyProfile() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#E6F3FF]">
-      {/* Sidebar */}
-      <SideBar />
+    <div className="flex flex-col min-h-screen bg-blue-50">
+      <Navbar />
 
       {/* Main Content */}
-      <div className="flex-1 p-8">
+      <div className="p-8"> 
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">My Profile</h1>
+        <div className="flex justify-between items-center mb-6 bg-blue-900 h-20 rounded-lg ">
+          <h1 className="text-xl font-bold text-white p-6">My Profile</h1>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-lg shadow-sm hover:bg-gray-100"
+            className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 p-6 mr-6 rounded-lg shadow-sm hover:bg-blue-400"
           >
-            <Edit3 className="w-4 h-4" /> Edit Profile
+            <Edit3 className="w-4 h-4 " /> Edit Profile
           </button>
         </div>
 
         {/* Profile Card */}
-        <div className="bg-white rounded-xl shadow-md p-6 max-w-3xl">
+        <div className="bg-white rounded-xl shadow-md p-6 max-w h-70">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            {/* Profile Picture */}
-            <div className="w-28 h-28 rounded-full bg-blue-200 flex items-center justify-center text-3xl font-semibold text-blue-800">
-              {profileData.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+            
+            {/* Profile Picture - CORRECTED CODE BLOCK */}
+            <div className="w-28 h-28 rounded-full overflow-hidden bg-blue-200 flex items-center justify-center">
+              <img
+                // The image source must use the imported variable, not a string path
+                src={ProfileImage} 
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
+            {/* END CORRECTED CODE BLOCK */}
 
             {/* Profile Info */}
             <div className="flex-1 space-y-3">
