@@ -15,26 +15,63 @@ export default function AdminAllProjects() {
       <h2>All Projects</h2>
       <table>
         <thead>
-          <tr><th>Name</th><th>Status</th><th>Progress</th><th>Invoice</th><th>Action</th></tr>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Progress</th>
+            <th>Invoice</th>
+            <th>Action</th>
+          </tr>
         </thead>
         <tbody>
-          {projects.map(p=>(
+          {projects.map(p => (
             <tr key={p.id}>
               {editing === p.id ? (
                 <>
-                  <td><input value={p.name} onChange={e=>update(p.id,"name",e.target.value)}/></td>
-                  <td><input value={p.status} onChange={e=>update(p.id,"status",e.target.value)}/></td>
-                  <td><input type="number" value={p.progress} onChange={e=>update(p.id,"progress",e.target.value)}/></td>
-                  <td><input type="number" value={p.invoice} onChange={e=>update(p.id,"invoice",e.target.value)}/></td>
                   <td>
-                    <button onClick={()=>setEditing(null)}>Save</button>
-                    <button className="cancel" onClick={()=>setEditing(null)}>Cancel</button>
+                    <input
+                      value={p.name}
+                      onChange={e => update(p.id, "name", e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <select
+                      value={p.status}
+                      onChange={e => update(p.id, "status", e.target.value)}
+                    >
+                      <option>To Do</option>
+                      <option>In Progress</option>
+                      <option>Done</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={p.progress}
+                      onChange={e => update(p.id, "progress", e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={p.invoice}
+                      onChange={e => update(p.id, "invoice", e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <button onClick={() => setEditing(null)}>Save</button>
+                    <button className="cancel" onClick={() => setEditing(null)}>Cancel</button>
                   </td>
                 </>
               ) : (
                 <>
-                  <td>{p.name}</td><td>{p.status}</td><td>{p.progress}%</td><td>{p.invoice}</td>
-                  <td><button onClick={()=>setEditing(p.id)}>Edit</button></td>
+                  <td>{p.name}</td>
+                  <td>{p.status}</td>
+                  <td>{p.progress}%</td>
+                  <td>{p.invoice}</td>
+                  <td>
+                    <button onClick={() => setEditing(p.id)}>Edit</button>
+                  </td>
                 </>
               )}
             </tr>

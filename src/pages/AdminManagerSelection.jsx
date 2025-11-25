@@ -1,37 +1,128 @@
 import React, { useState } from "react";
 
 export default function AdminManagerSelection() {
-  const [data, setData] = useState([{ id:1,name:"ERP Implementation",status:"Pending",manager:"Tashi"}]);
+  const [data, setData] = useState([
+    { id: 1, name: "ERP Implementation", status: "Pending", managers: ["Tashi"], budget: 50000 }
+  ]);
   const [editing, setEditing] = useState(null);
   const [modal, setModal] = useState(false);
-  const [newProj, setNewProj] = useState({name:"",status:"To Do",manager:"",budget:""});
+  const [newProj, setNewProj] = useState({
+    name: "",
+    status: "To Do",
+    managers: [""],
+    budget: ""
+  });
 
-  const save =()=>{ setData([ {...newProj,id:Date.now()},...data ]); setModal(false); };
+  // Keep track of project count for auto-naming
+  const [projectCount, setProjectCount] = useState(1);
+
+  const openModal = () => {
+    // Automatically set default project name
+    setNewProj({
+      name: `New Project ${projectCount}`,
+      status: "To Do",
+      managers: [""],
+      budget: ""
+    });
+    setModal(true);
+  };
+
+  const save = () => {
+    setData([{ ...newProj, id: Date.now() }, ...data]);
+    setProjectCount(prev => prev + 1); // Increment count for next project
+    setModal(false);
+  };
+
+  const handleManagerChange = (index, value) => {
+    const managersCopy = [...newProj.managers];
+    managersCopy[index] = value;
+    setNewProj({ ...newProj, managers: managersCopy });
+  };
+
+  const addManagerField = () => {
+    setNewProj({ ...newProj, managers: [...newProj.managers, ""] });
+  };
 
   return (
     <div className="section">
       <div className="section-header">
         <h2>Manager Selection</h2>
-        <button onClick={()=>setModal(true)}>+ Create Project</button>
+        <button onClick={openModal}>+ Create Project</button>
       </div>
 
       <table>
-        <thead><tr><th>Name</th><th>Status</th><th>Manager</th><th>Budget</th><th>Action</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Managers</th>
+            <th>Budget</th>
+            <th>Action</th>
+          </tr>
+        </thead>
         <tbody>
-          {data.map(p=>(
+          {data.map(p => (
             <tr key={p.id}>
-              {editing===p.id?(
+              {editing === p.id ? (
                 <>
-                  <td><input value={p.name} onChange={e=>setData(d=>d.map(x=>x.id===p.id?{...x,name:e.target.value}:x))}/></td>
-                  <td><input value={p.status} onChange={e=>setData(d=>d.map(x=>x.id===p.id?{...x,status:e.target.value}:x))}/></td>
-                  <td><input value={p.manager} onChange={e=>setData(d=>d.map(x=>x.id===p.id?{...x,manager:e.target.value}:x))}/></td>
-                  <td><input value={p.budget} onChange={e=>setData(d=>d.map(x=>x.id===p.id?{...x,budget:e.target.value}:x))}/></td>
-                  <td><button onClick={()=>setEditing(null)}>Save</button></td>
+                  <td>
+                    <input
+                      value={p.name}
+                      onChange={e =>
+                        setData(d => d.map(x => (x.id === p.id ? { ...x, name: e.target.value } : x)))
+                      }
+                    />
+                  </td>
+                  <td>
+                    <select
+                      value={p.status}
+                      onChange={e =>
+                        setData(d => d.map(x => (x.id === p.id ? { ...x, status: e.target.value } : x)))
+                      }
+                    >
+                      <option>To Do</option>
+                      <option>In Progress</option>
+                      <option>Done</option>
+                    </select>
+                  </td>
+                  <td>
+                    {p.managers.map((m, i) => (
+                      <input
+                        key={i}
+                        value={m}
+                        onChange={e =>
+                          setData(d =>
+                            d.map(x =>
+                              x.id === p.id
+                                ? { ...x, managers: x.managers.map((val, idx) => (idx === i ? e.target.value : val)) }
+                                : x
+                            )
+                          )
+                        }
+                        style={{ display: "block", marginBottom: "4px" }}
+                      />
+                    ))}
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={p.budget}
+                      onChange={e => setData(d => d.map(x => (x.id === p.id ? { ...x, budget: e.target.value } : x)))}
+                    />
+                  </td>
+                  <td>
+                    <button onClick={() => setEditing(null)}>Save</button>
+                  </td>
                 </>
-              ):(
+              ) : (
                 <>
-                  <td>{p.name}</td><td>{p.status}</td><td>{p.manager}</td><td>Nu {p.budget}</td>
-                  <td><button onClick={()=>setEditing(p.id)}>Edit</button></td>
+                  <td>{p.name}</td>
+                  <td>{p.status}</td>
+                  <td>{p.managers.join(", ")}</td>
+                  <td>Nu {p.budget}</td>
+                  <td>
+                    <button onClick={() => setEditing(p.id)}>Edit</button>
+                  </td>
                 </>
               )}
             </tr>
@@ -44,12 +135,39 @@ export default function AdminManagerSelection() {
         <div className="modal-overlay">
           <div className="modal">
             <h3>Create New Project</h3>
-            <input placeholder="Project Name" onChange={e=>setNewProj({...newProj,name:e.target.value})}/>
-            <input placeholder="Manager" onChange={e=>setNewProj({...newProj,manager:e.target.value})}/>
-            <input placeholder="Budget" type="number" onChange={e=>setNewProj({...newProj,budget:e.target.value})}/>
+
+            <label>Project Name</label>
+            <input value={newProj.name} disabled /> {/* Default name, cannot edit */}
+
+            <label>Status</label>
+            <select
+              value={newProj.status}
+              onChange={e => setNewProj({ ...newProj, status: e.target.value })}
+            >
+              <option>To Do</option>
+              <option>In Progress</option>
+              <option>Done</option>
+            </select>
+
+            <label>Managers</label>
+            {newProj.managers.map((m, i) => (
+              <input
+                key={i}
+                placeholder={`Manager ${i + 1}`}
+                value={m}
+                onChange={e => handleManagerChange(i, e.target.value)}
+                style={{ display: "block", marginBottom: "4px" }}
+              />
+            ))}
+            <button type="button" onClick={addManagerField} style={{ marginBottom: "10px" }}>
+              + Add Another Manager
+            </button>
+
+        
+
             <div className="modal-actions">
               <button onClick={save}>Save</button>
-              <button className="cancel" onClick={()=>setModal(false)}>Cancel</button>
+              <button className="cancel" onClick={() => setModal(false)}>Cancel</button>
             </div>
           </div>
         </div>

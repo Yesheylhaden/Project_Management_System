@@ -61,8 +61,9 @@ export default function AdminDashboard() {
       <div className="stats-row">
         <div className="stat-box blue"><h3>TO DO</h3><h1>{projects.filter(p=>p.status==="To Do").length}</h1></div>
         <div className="stat-box orange"><h3>IN PROGRESS</h3><h1>{projects.filter(p=>p.status==="In Progress").length}</h1></div>
-        <div className="stat-box cyan"><h3>INVOICE</h3><h1>{projects.filter(p=>p.invoice<100).length}</h1></div>
         <div className="stat-box green"><h3>DONE</h3><h1>{projects.filter(p=>p.status==="Done").length}</h1></div>
+        <div className="stat-box cyan"><h3>INVOICE</h3><h1>{projects.filter(p=>p.invoice<100).length}</h1></div>
+        
       </div>
     </div>
   );
