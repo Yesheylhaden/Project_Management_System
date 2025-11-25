@@ -7,6 +7,8 @@ export default function AdminDashboard() {
   const [selectionProjects, setSelectionProjects] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [editing, setEditing] = useState({ type: '', id: null }); // track which record is being edited
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const [newProject, setNewProject] = useState({
     name: '',
@@ -106,24 +108,45 @@ export default function AdminDashboard() {
 
   return (
     <div className="dashboard-container">
-      {/* Header */}
-      {/* Header */}
-<header className="header glass-header">
-  <div className="logo-block">
-    <img src="/logo.png" alt="Thimphu TechPark Logo" className="logo-img" />
-    <div className="logo-text">
-      <h4>Thimphu TechPark</h4>
-      <p>BHUTAN'S FIRST IT PARK</p>
+      
+      
+      
+ <header className="header glass-header">
+
+  <div className="logo-row">
+    {/* Hamburger on left of logo */}
+    <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    {/* Logo block stays same */}
+    <div className="logo-block">
+      <img src="/logo.png" alt="Thimphu TechPark Logo" className="logo-img" />
+      <div className="logo-text">
+        <h4>Thimphu TechPark</h4>
+        <p>BHUTAN'S FIRST IT PARK</p>
+      </div>
     </div>
   </div>
-   <div className="header-right">
-    {/* Notification icon */}
-    <div className="notification">🔔</div>
 
-    {/* Profile */}
+  <div className="header-right">
+    <div className="notification">🔔</div>
     <div className="profile">A</div>
   </div>
 </header>
+
+{/* Dropdown */}
+{menuOpen && (
+  <div className="dropdown-menu">
+    <p>Dashboard</p>
+    <p>All Projects</p>
+    <p>Manager Selection</p>
+    <p>User Management</p>
+  </div>
+)}
+
 
 
       {/* Intro */}
