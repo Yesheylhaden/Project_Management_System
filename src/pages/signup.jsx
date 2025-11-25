@@ -17,7 +17,12 @@ export default function Signup() {
           <option>NGN</option>
           <option>Selise</option>
         </select>
-        <input className="signup-input" type="Domain email" placeholder="Email" />
+        
+        <input className="signup-input" type=" email" placeholder="Email"  onChange={(e) => {
+    const value = e.target.value.replace(/@.*/, ""); 
+    setEmail(value + "@yourdomain.com");
+  }} />
+          
         <div className="signup-names-row">
           <input
             className="signup-input"

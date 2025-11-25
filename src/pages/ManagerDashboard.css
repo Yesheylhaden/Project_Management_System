@@ -19,6 +19,29 @@
   margin-bottom: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* space between notification and profile */
+}
+
+.notification {
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Optional: add a red dot for unread notifications */
+.notification::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+}
 
 /* Logo block (logo + text together) */
 .logo-block {

@@ -6,7 +6,7 @@ export default function ManagerDashboard() {
   const [users, setUsers] = useState([]);
   const [selectionProjects, setSelectionProjects] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [editing, setEditing] = useState({ type: '', id: null }); // track which record is being edited
+  const [editing, setEditing] = useState({ type: '', id: null }); 
 
   const [newProject, setNewProject] = useState({
     name: '',
@@ -116,7 +116,14 @@ export default function ManagerDashboard() {
       <p>BHUTAN'S FIRST IT PARK</p>
     </div>
   </div>
-  <div className="profile">M</div>
+  
+  <div className="header-right">
+    {/* Notification icon */}
+    <div className="notification">🔔</div>
+
+    {/* Profile */}
+    <div className="profile">M</div>
+  </div>
 </header>
 
 

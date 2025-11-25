@@ -116,7 +116,13 @@ export default function AdminDashboard() {
       <p>BHUTAN'S FIRST IT PARK</p>
     </div>
   </div>
-  <div className="profile">A</div>
+   <div className="header-right">
+    {/* Notification icon */}
+    <div className="notification">🔔</div>
+
+    {/* Profile */}
+    <div className="profile">A</div>
+  </div>
 </header>
 
 
