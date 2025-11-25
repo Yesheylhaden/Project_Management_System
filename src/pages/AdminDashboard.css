@@ -3,7 +3,7 @@
 /* General layout */
 .dashboard-container {
   font-family: Arial, sans-serif;
-  padding: 100px;
+  padding:  100px;
   background: #f4f8fb;
   min-height: 100vh;
   box-sizing: border-box;
@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 300px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 

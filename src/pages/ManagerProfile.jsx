@@ -16,8 +16,7 @@ export default function ManagerProfile() {
         </div>
 
         <nav className="mp-nav">
-          <a href="/dashboard">Dashboard</a>
-          <a href="/project">Project</a>
+          <a href="/dashboard">ManagerDashboard</a>
           <a href="/manager-profile" className="active">
             Profile
           </a>
