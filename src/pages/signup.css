@@ -33,7 +33,7 @@ body,
 .signup-input {
   width: 100%;
   height: 40px;
-  padding: 1rem;
+  padding: 8px 12px;
   margin: 6px;
   border-radius: 6px;
   border: 1px solid #ccc;

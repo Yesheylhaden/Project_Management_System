@@ -17,7 +17,7 @@ export default function Signup() {
           <option>NGN</option>
           <option>Selise</option>
         </select>
-        <input className="signup-input" type="email" placeholder="Email" />
+        <input className="signup-input" type="Domain email" placeholder="Email" />
         <div className="signup-names-row">
           <input
             className="signup-input"
@@ -46,12 +46,12 @@ export default function Signup() {
           Sign up
         </button>
 
-        {/* <div className="signup-remember">
+        <div className="signup-remember">
           <label className="remember-container">
             <input type="checkbox" className="remember-checkbox" />
             <span className="remember-text">Remember me</span>
           </label>
-        </div> */}
+        </div> 
 
         <hr style={{ width: "100%", margin: "10px " }} />
         <button className="signup-google-btn" type="button">
