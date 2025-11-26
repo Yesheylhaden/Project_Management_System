@@ -9,16 +9,18 @@ import ViewAllTasks from "./pages/DD_ViewAllTasks";
 import ViewAllActivities from "./pages/DD_ViewAllActivities";
 import DeveloperEditProfile from "./pages/DD_EditProfile";
 
-// Admin sub-pages (NEW)
+// Admin pages
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminProfile from "./pages/AdminProfile";
-import AdminAllProjects from "./pages/AdminAllProjects";          // NEW FILE
+import AdminAllProjects from "./pages/AdminAllProjects";
 import AdminProjectList from "./pages/AdminProjectList";
-import AdminUserManagement from "./pages/AdminUserManagement";     // NEW FILE
+import AdminUserManagement from "./pages/AdminUserManagement";
 
-// Manager
+// Manager pages
 import ManagerDashboard from "./pages/ManagerDashboard";
 import ManagerProfile from "./pages/ManagerProfile";
+import ManagerAllProjects from "./pages/ManagerAllProjects";     // NEW
+import ManagerProjectList from "./pages/ManagerProjectList";     // NEW
 
 // Auth
 import Signup from "./pages/signup";
@@ -37,6 +39,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
+
         {/* Signup & ForgotPassword */}
         <Route path="/" element={<Signup />} />
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
@@ -44,15 +47,17 @@ export default function App() {
         {/* Login */}
         <Route path="/login" element={<Login />} />
 
-        {/* Manager */}
+        {/* -------------------- MANAGER ROUTES -------------------- */}
         <Route path="/managerDashboard" element={<ManagerDashboard />} />
         <Route path="/managerProfile" element={<ManagerProfile />} />
+
+        {/* Manager Sub-Pages (NEW) */}
+        <Route path="/managerDashboard/all-projects" element={<ManagerAllProjects />} />
+        <Route path="/managerDashboard/project-list" element={<ManagerProjectList />} />
 
         {/* -------------------- ADMIN ROUTES -------------------- */}
         <Route path="/adminDashboard" element={<AdminDashboard />} />
         <Route path="/adminProfile" element={<AdminProfile />} />
-
-        {/* Admin Sub-Pages (NEW) */}
         <Route path="/adminDashboard/all-projects" element={<AdminAllProjects />} />
         <Route path="/adminDashboard/project-list" element={<AdminProjectList />} />
         <Route path="/adminDashboard/user-management" element={<AdminUserManagement />} />
@@ -72,6 +77,7 @@ export default function App() {
         <Route path="/TableView" element={<TableView />} />
         <Route path="/InvoiceBills" element={<InvoiceAndBills />} />
         <Route path="/Profile" element={<MyProfile />} />
+
       </Routes>
     </Router>
   );

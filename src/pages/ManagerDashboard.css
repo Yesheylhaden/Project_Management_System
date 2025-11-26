@@ -269,3 +269,49 @@ input, select {
   color: #333;
   margin-top: 4px;
 }
+/* row for hamburger + logo together */
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* HAMBURGER STYLE */
+.hamburger {
+  width: 28px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger div {
+  height: 4px;
+  background: black;
+  border-radius: 6px;
+}
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+  position: absolute;
+  top: 80px;
+  left: 25px;
+  background: #fff;
+  width: 180px;
+  padding: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.dropdown-menu p {
+  padding: 12px 20px;
+  margin: 0;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.dropdown-menu p:hover {
+  background: #f2f5f9;
+}
