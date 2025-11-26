@@ -8,27 +8,33 @@ export default function AdminProjectList() {
       status: "Pending",
       managers: ["Tashi"],
       budget: 50000,
-      progress: 0 // initial progress
+      startDate: "2025-01-01",
+      endDate: "2025-03-01",
+      progress: 0
     }
   ]);
+
   const [editing, setEditing] = useState(null);
   const [modal, setModal] = useState(false);
+
   const [newProj, setNewProj] = useState({
     name: "",
     status: "To Do",
     managers: [""],
     budget: "",
+    startDate: "",
+    endDate: "",
     progress: 0
   });
 
-  const [projectCount, setProjectCount] = useState(1);
-
   const openModal = () => {
     setNewProj({
-      name: `New Project ${projectCount}`,
+      name: "",
       status: "To Do",
       managers: [""],
       budget: "",
+      startDate: "",
+      endDate: "",
       progress: 0
     });
     setModal(true);
@@ -36,56 +42,63 @@ export default function AdminProjectList() {
 
   const save = () => {
     setData([{ ...newProj, id: Date.now() }, ...data]);
-    setProjectCount(prev => prev + 1);
     setModal(false);
   };
 
   const handleManagerChange = (index, value) => {
-    const managersCopy = [...newProj.managers];
-    managersCopy[index] = value;
-    setNewProj({ ...newProj, managers: managersCopy });
-  };
-
-  const addManagerField = () => {
-    setNewProj({ ...newProj, managers: [...newProj.managers, ""] });
+    const copy = [...newProj.managers];
+    copy[index] = value;
+    setNewProj({ ...newProj, managers: copy });
   };
 
   return (
     <div className="section">
+
       <div className="section-header">
         <h2>Project List</h2>
         <button onClick={openModal}>+ Create Project</button>
       </div>
 
+      {/* TABLE */}
       <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Status</th>
-            <th>Progress</th> {/* NEW COLUMN */}
+            <th>Progress</th>
             <th>Managers</th>
             <th>Budget</th>
+            <th>Start</th>
+            <th>End</th>
             <th>Action</th>
           </tr>
         </thead>
+
         <tbody>
           {data.map(p => (
             <tr key={p.id}>
               {editing === p.id ? (
                 <>
+                  {/* NAME */}
                   <td>
                     <input
                       value={p.name}
                       onChange={e =>
-                        setData(d => d.map(x => (x.id === p.id ? { ...x, name: e.target.value } : x)))
+                        setData(d =>
+                          d.map(x => (x.id === p.id ? { ...x, name: e.target.value } : x))
+                        )
                       }
                     />
                   </td>
+
+                  {/* STATUS */}
                   <td>
                     <select
                       value={p.status}
                       onChange={e =>
-                        setData(d => d.map(x => (x.id === p.id ? { ...x, status: e.target.value } : x)))
+                        setData(d =>
+                          d.map(x => (x.id === p.id ? { ...x, status: e.target.value } : x))
+                        )
                       }
                     >
                       <option>To Do</option>
@@ -93,19 +106,25 @@ export default function AdminProjectList() {
                       <option>Done</option>
                     </select>
                   </td>
+
+                  {/* PROGRESS */}
                   <td>
                     <input
                       type="number"
+                      min="0"
+                      max="100"
                       value={p.progress}
                       onChange={e =>
                         setData(d =>
-                          d.map(x => (x.id === p.id ? { ...x, progress: Number(e.target.value) } : x))
+                          d.map(x =>
+                            x.id === p.id ? { ...x, progress: Number(e.target.value) } : x
+                          )
                         )
                       }
-                      min={0}
-                      max={100}
                     />%
                   </td>
+
+                  {/* MANAGERS */}
                   <td>
                     {p.managers.map((m, i) => (
                       <input
@@ -115,22 +134,65 @@ export default function AdminProjectList() {
                           setData(d =>
                             d.map(x =>
                               x.id === p.id
-                                ? { ...x, managers: x.managers.map((val, idx) => (idx === i ? e.target.value : val)) }
+                                ? {
+                                    ...x,
+                                    managers: x.managers.map((val, idx) =>
+                                      idx === i ? e.target.value : val
+                                    )
+                                  }
                                 : x
                             )
                           )
                         }
-                        style={{ display: "block", marginBottom: "4px" }}
                       />
                     ))}
                   </td>
+
+                  {/* BUDGET */}
                   <td>
                     <input
                       type="number"
                       value={p.budget}
-                      onChange={e => setData(d => d.map(x => (x.id === p.id ? { ...x, budget: e.target.value } : x)))}
+                      onChange={e =>
+                        setData(d =>
+                          d.map(x =>
+                            x.id === p.id ? { ...x, budget: Number(e.target.value) } : x
+                          )
+                        )
+                      }
                     />
                   </td>
+
+                  {/* START DATE */}
+                  <td>
+                    <input
+                      type="date"
+                      value={p.startDate}
+                      onChange={e =>
+                        setData(d =>
+                          d.map(x =>
+                            x.id === p.id ? { ...x, startDate: e.target.value } : x
+                          )
+                        )
+                      }
+                    />
+                  </td>
+
+                  {/* END DATE */}
+                  <td>
+                    <input
+                      type="date"
+                      value={p.endDate}
+                      onChange={e =>
+                        setData(d =>
+                          d.map(x =>
+                            x.id === p.id ? { ...x, endDate: e.target.value } : x
+                          )
+                        )
+                      }
+                    />
+                  </td>
+
                   <td>
                     <button onClick={() => setEditing(null)}>Save</button>
                   </td>
@@ -139,9 +201,11 @@ export default function AdminProjectList() {
                 <>
                   <td>{p.name}</td>
                   <td>{p.status}</td>
-                  <td>{p.progress}%</td> {/* Display as percentage */}
+                  <td>{p.progress}%</td>
                   <td>{p.managers.join(", ")}</td>
                   <td>Nu {p.budget}</td>
+                  <td>{p.startDate}</td>
+                  <td>{p.endDate}</td>
                   <td>
                     <button onClick={() => setEditing(p.id)}>Edit</button>
                   </td>
@@ -152,15 +216,21 @@ export default function AdminProjectList() {
         </tbody>
       </table>
 
-      {/* Modal */}
+      {/* ------------------- MODAL ------------------- */}
       {modal && (
         <div className="modal-overlay">
           <div className="modal">
             <h3>Create New Project</h3>
 
+            {/* Project Name */}
             <label>Project Name</label>
-            <input value={newProj.name} disabled />
+            <input
+              placeholder="Enter project name"
+              value={newProj.name}
+              onChange={e => setNewProj({ ...newProj, name: e.target.value })}
+            />
 
+            {/* Status */}
             <label>Status</label>
             <select
               value={newProj.status}
@@ -171,24 +241,48 @@ export default function AdminProjectList() {
               <option>Done</option>
             </select>
 
-            
+            {/* Budget */}
+            <label>Budget (Nu)</label>
+            <input
+              type="number"
+              placeholder="Enter budget"
+              value={newProj.budget}
+              onChange={e => setNewProj({ ...newProj, budget: e.target.value })}
+            />
 
+            {/* Start Date */}
+            <label>Start Date</label>
+            <input
+              type="date"
+              value={newProj.startDate}
+              onChange={e => setNewProj({ ...newProj, startDate: e.target.value })}
+            />
+
+            {/* End Date */}
+            <label>End Date</label>
+            <input
+              type="date"
+              value={newProj.endDate}
+              onChange={e => setNewProj({ ...newProj, endDate: e.target.value })}
+            />
+
+            {/* Project Lead */}
             <label>Project Lead</label>
             {newProj.managers.map((m, i) => (
               <input
                 key={i}
-                placeholder={``}
+                placeholder="Manager name"
                 value={m}
                 onChange={e => handleManagerChange(i, e.target.value)}
                 style={{ display: "block", marginBottom: "4px" }}
               />
             ))}
-            
-          
 
             <div className="modal-actions">
               <button onClick={save}>Save</button>
-              <button className="cancel" onClick={() => setModal(false)}>Cancel</button>
+              <button className="cancel" onClick={() => setModal(false)}>
+                Cancel
+              </button>
             </div>
           </div>
         </div>
