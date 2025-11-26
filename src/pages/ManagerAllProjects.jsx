@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-
 export default function ManagerAllProjects() {
   const [projects, setProjects] = useState([]);
-  const [editing, setEditing] = useState({ type: "", id: null });
+  const [editingId, setEditingId] = useState(null);   // only store ID for progress editing
 
   useEffect(() => {
     setProjects([
@@ -21,33 +20,16 @@ export default function ManagerAllProjects() {
     ]);
   }, []);
 
-  const handleAddProject = () => {
-    const newProject = {
-      id: Date.now(),
-      name: "New Project",
-      status: "To Do",
-      progress: 0,
-      invoice: 0,
-      startDate: "",
-      endDate: "",
-      deadline: "",
-      priority: "Medium",
-    };
-    setProjects([newProject, ...projects]);
+  const handleProgressChange = (id, value) => {
+    setProjects(projects.map(p => 
+      p.id === id ? { ...p, progress: value } : p
+    ));
   };
-
-  const handleProjectChange = (id, field, value) => {
-    setProjects(projects.map((p) => (p.id === id ? { ...p, [field]: value } : p)));
-  };
-
-  const handleSaveEdit = () => setEditing({ type: "", id: null });
-  const handleCancelEdit = () => setEditing({ type: "", id: null });
 
   return (
     <div className="section page-container">
       <div className="section-header">
         <h2>All Projects</h2>
-        <button onClick={handleAddProject}>+ Add Project</button>
       </div>
 
       <table>
@@ -68,40 +50,37 @@ export default function ManagerAllProjects() {
         <tbody>
           {projects.map((p) => (
             <tr key={p.id}>
-              {editing.id === p.id ? (
-                <>
-                  <td><input value={p.name} onChange={(e) => handleProjectChange(p.id, "name", e.target.value)} /></td>
-                  <td><input value={p.status} onChange={(e) => handleProjectChange(p.id, "status", e.target.value)} /></td>
-                  <td><input type="number" value={p.progress} onChange={(e) => handleProjectChange(p.id, "progress", e.target.value)} /></td>
-                  <td><input type="number" value={p.invoice} onChange={(e) => handleProjectChange(p.id, "invoice", e.target.value)} /></td>
-                  <td><input type="date" value={p.startDate} onChange={(e) => handleProjectChange(p.id, "startDate", e.target.value)} /></td>
-                  <td><input type="date" value={p.endDate} onChange={(e) => handleProjectChange(p.id, "endDate", e.target.value)} /></td>
-                  <td><input type="date" value={p.deadline} onChange={(e) => handleProjectChange(p.id, "deadline", e.target.value)} /></td>
-                  <td>
-                    <select value={p.priority} onChange={(e) => handleProjectChange(p.id, "priority", e.target.value)}>
-                      <option>Low</option>
-                      <option>Medium</option>
-                      <option>High</option>
-                    </select>
-                  </td>
-                  <td>
-                    <button onClick={handleSaveEdit}>Save</button>
-                    <button className="cancel" onClick={handleCancelEdit}>Cancel</button>
-                  </td>
-                </>
-              ) : (
-                <>
-                  <td>{p.name}</td>
-                  <td>{p.status}</td>
-                  <td>{p.progress}%</td>
-                  <td>{p.invoice}</td>
-                  <td>{p.startDate}</td>
-                  <td>{p.endDate}</td>
-                  <td>{p.deadline}</td>
-                  <td>{p.priority}</td>
-                  <td><button onClick={() => setEditing({ type: "project", id: p.id })}>Edit</button></td>
-                </>
-              )}
+              <td>{p.name}</td>
+              <td>{p.status}</td>
+
+              {/* PROGRESS is the ONLY editable field */}
+              <td>
+                {editingId === p.id ? (
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={p.progress}
+                    onChange={(e) => handleProgressChange(p.id, e.target.value)}
+                  />
+                ) : (
+                  p.progress + "%"
+                )}
+              </td>
+
+              <td>{p.invoice}</td>
+              <td>{p.startDate}</td>
+              <td>{p.endDate}</td>
+              <td>{p.deadline}</td>
+              <td>{p.priority}</td>
+
+              <td>
+                {editingId === p.id ? (
+                  <button onClick={() => setEditingId(null)}>Done</button>
+                ) : (
+                  <button onClick={() => setEditingId(p.id)}>Edit Progress</button>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
