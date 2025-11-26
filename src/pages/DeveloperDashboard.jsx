@@ -70,19 +70,19 @@ export default function Dashboard() {
               task="Implement user authentication API"
               project="Website Redesign"
               due="Tomorrow"
-              status="High Priority"
+              // status="High Priority"
             />
             <TaskItem
               task="Fix database connection pooling"
               project="Mobile App"
               due="Oct 12"
-              status="Medium Priority"
+              // status="Medium Priority"
             />
             <TaskItem
               task="Code review for payment module"
               project="E-commerce"
               due="Oct 5"
-              status="Completed"
+              // status="Completed"
             />
           </div>
         </div>

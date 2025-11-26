@@ -18,19 +18,19 @@ const DeveloperProfile = () => {
     {
       title: "Implement user authentication API",
       project: "Website Redesign",
-      priority: "High",
+      // priority: "High",
       status: "In Progress",
     },
     {
       title: "Fix database connection pooling",
       project: "Mobile App Development",
-      priority: "Medium",
+      // priority: "Medium",
       status: "Pending",
     },
     {
       title: "Code review for payment module",
       project: "E-commerce",
-      priority: "Low",
+      // priority: "Low",
       status: "Completed",
     },
   ];
@@ -202,10 +202,10 @@ const DeveloperProfile = () => {
                 >
                   <p className="text-sm font-medium">{t.title}</p>
                   <p className="text-xs text-gray-500">
-                    Project: {t.project} —
+                    {/* Project: {t.project} —
                     <span className={getPriorityColor(t.priority)}>
                       {t.priority} Priority
-                    </span>
+                    </span> */}
                   </p>
                   <p className="text-xs text-gray-400">{t.status}</p>
                 </div>

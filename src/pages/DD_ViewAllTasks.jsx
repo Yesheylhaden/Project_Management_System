@@ -6,28 +6,28 @@ const tasks = [
     title: "Implement user authentication API",
     project: "Website Redesign",
     due: "Tomorrow",
-    priority: "High",
+    // priority: "High",
     statusColor: "text-red-600",
   },
   {
     title: "Fix database connection pooling",
     project: "Mobile App",
     due: "Oct 12",
-    priority: "Medium",
+    // priority: "Medium",
     statusColor: "text-yellow-600",
   },
   {
     title: "Code review for payment module",
     project: "E-commerce",
     due: "Oct 5",
-    priority: "Completed",
+    // priority: "Completed",
     statusColor: "text-green-600",
   },
   {
     title: "Design new UI for Admin Dashboard",
     project: "Website Redesign",
     due: "Nov 3",
-    priority: "Low",
+    // priority: "Low",
     statusColor: "text-blue-600",
   },
 ];
@@ -46,7 +46,7 @@ export default function AllTasks() {
               <th className="p-3 font-semibold">Task</th>
               <th className="p-3 font-semibold">Project</th>
               <th className="p-3 font-semibold">Due Date</th>
-              <th className="p-3 font-semibold">Priority</th>
+              {/* <th className="p-3 font-semibold">Priority</th> */}
             </tr>
           </thead>
           <tbody>
@@ -58,9 +58,9 @@ export default function AllTasks() {
                 <td className="p-3 font-medium text-gray-800">{task.title}</td>
                 <td className="p-3 text-gray-600">{task.project}</td>
                 <td className="p-3 text-gray-600">{task.due}</td>
-                <td className={`p-3 font-semibold ${task.statusColor}`}>
+                {/* <td className={`p-3 font-semibold ${task.statusColor}`}>
                   {task.priority}
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
