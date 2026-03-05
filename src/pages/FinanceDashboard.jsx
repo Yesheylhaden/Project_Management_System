@@ -47,7 +47,7 @@ export default function FinanceDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-blue-50">
+    <div className="h-screen overflow-y-auto bg-blue-50">
       {/* Top Navbar */}
       <nav className="bg-white shadow-sm flex justify-between items-center px-8 py-3 sticky top-0 z-50">
         {/* Logo and Title */}
@@ -89,7 +89,7 @@ export default function FinanceDashboard() {
       {/* Main Content */}
       <div className="p-6">
         {/* Header */}
-        <div className="flex justify-between items-center bg-blue-900 h-23 border   px-4 py-6 rounded-lg">
+        <div className="flex justify-between items-center bg-blue-900 h-23 border px-4 py-6 rounded-lg">
           <div className="mb-4">
             <h1 className="text-2xl font-bold text-white">
               Financial Dashboard

@@ -72,9 +72,7 @@ export default function TableView() {
       "Project Name,Status,Progress,Team,Start Date,Deadline,Priority\n";
     const csvRows = projects.map(
       (p) =>
-        `${p.name},${p.status},${p.progress}%,${p.team.join(" / ")},${
-          p.startDate
-        },${p.deadline},${p.priority}`
+        `${p.name},${p.status},${p.progress}%,${p.team.join(" / ")},${p.startDate},${p.deadline},${p.priority}`
     );
     const csvContent =
       "data:text/csv;charset=utf-8," + csvHeader + csvRows.join("\n");
@@ -88,19 +86,14 @@ export default function TableView() {
   };
 
   return (
-    // CHANGE 1: Changed main div to flex-col (vertical layout)
-    <div className="flex flex-col min-h-screen bg-blue-50">
-      {/* CHANGE 2: Navbar is now at the top of the component tree */}
+    <div className="flex flex-col min-h-screen bg-blue-50 overflow-y-auto">
       <Navbar />
 
-      {/* Main Content (now takes up the rest of the space) */}
       <div className="flex-1 p-8">
-        {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">Table View</h1>
         </div>
 
-        {/* Search */}
         <div className="relative mb-6">
           <Search className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
           <input
@@ -110,12 +103,10 @@ export default function TableView() {
           />
         </div>
 
-        {/* Table Container */}
         <div className="bg-white rounded-xl shadow-md p-4">
           <div className="flex justify-between items-center mb-2">
             <h2 className="font-semibold text-gray-700">All Projects</h2>
             <div className="flex gap-2">
-              {/* ✅ Export button now works */}
               <button
                 onClick={handleExport}
                 className="flex items-center gap-1 text-sm text-gray-600 border border-gray-300 px-2 py-1 rounded hover:bg-gray-100"
@@ -129,7 +120,6 @@ export default function TableView() {
             </div>
           </div>
 
-          {/* Table */}
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
               <thead className="text-gray-600 bg-gray-50 border-b">
